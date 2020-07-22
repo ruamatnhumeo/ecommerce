@@ -1,94 +1,84 @@
 const express = require('express');
 const router = express.Router();
 
-const Product = require('../models/Order');
+const Order = require('../models/Order');
 
-// @route GET /products
-// @desc get all products
-// @access private
+// @route GET /Orders
+// @desc get all Orders for admin
+// @access private for admin
 router.get('/', async (req, res) => {
     try {
-        const products = await Product.find();
-        if (!products) {
-            throw Error('No products!');
+        const Orders = await Order.find();
+        if (!Orders) {
+            throw Error('No Orders!');
         };
 
-        res.status(200).json(products);
+        res.status(200).json(Orders);
     } catch (error) {
         res.status(400).json({ msg: error.message });
     }
 });
 
-// @route GET /:category
-// @desc get collection from products
-// @access public
-router.get('/:category', async (req, res) => {
-    try {
-        const poductsBasedOnCollection = await Product.find(req.params.collection);
-        if (!poductsBasedOnCollection) {
-            throw Error('No collection found!');
-        };
-
-        res.status(200).json(poductsBasedOnCollection);
-    } catch (error) {
-        res.status(400).json({ msg: error.message });
-    }
-});
-
-// @route GET /product/:id
-// @desc get product by id 
-// @access public
+// @route GET /Order/:id
+// @desc get Order by id for user / history order
+// @access private for user
 router.get('/:id', async (req, res) => {
     try {
-        const product = await Product.findById(req.params.id);
-        if (!product) {
-            throw Error('No product found!');
+        const userId = req.params.id;
+        const historyCondition = {
+            fromId : userId
+        };
+        const history = await Order.find(historyCondition);
+        if (!history) {
+            throw Error('No history!');
         };
 
-        res.status(200).json(product);
+        res.status(200).json(history);
     } catch (error) {
         res.status(400).json({ msg: error.message });
     }
 });
 
-// @route POST /product
-// @desc create/add a product
-// @access private
+// @route POST /Order
+// @desc create/add an order
+// @access public
 router.post('/', async (req, res) => {
-    const newProduct = new Product({
-        name: req.body.name,
-        price: req.body.price,
-        desc: req.body.desc,
-        imgName: req.body.imgName,
-        category: req.body.category,
-        sizes: req.body.sizes,
+    const newOrder = new Order({
+        number: req.body.number,
+        // totalPrice: req.body.totalPrice,
+        // coment: req.body.coment,
+        // toStreet: req.body.toStreet,
+        // toCity: req.body.toCity,
+        // fromId: req.body._id,
+        // paymentType: req.body.paymentType,
+        // cart: req.body.cart
     });
 
     try {
-        const savedProduct = await newProduct.save();
-        if (!savedProduct) {
-            throw Error('Error occured when saving product!');
+        const savedOrder = await newOrder.save();
+        if (!savedOrder) {
+            throw Error('Error occured when saving Order!');
         };
 
-        res.status(200).json(savedProduct);
+        res.status(200).json(savedOrder);
     } catch (error) {
         res.status(400).json({ msg: error.message });
     }
 });
 
-// @route DELETE product/:id
-// @desc remove product
-// @access private
+// @route DELETE Order/:id
+// @desc remove Order
+// @access private for admin
 router.delete('/:id', async (req, res) => {
     try {
-        const productWillRemove = await Product.findById(req.params.id);
-        if (!productWillRemove) {
-            throw Error('No product found!');
+        const orderWillRemove = await Order.findById(req.params.id);
+        if (!orderWillRemove) {
+            throw Error('No order found!');
         };
 
-        const removed = await productWillDelete.remove();
+        const removed = await orderWillRemove.remove();
         if (!removed) {
-            throw Error('Error occured when removing product!');
+            throw Error('Error occured when removing order!');
         }
 
         res.status(200).json({ success: true });
@@ -97,36 +87,6 @@ router.delete('/:id', async (req, res) => {
             msg: error.message,
             success: false
         });
-    }
-});
-
-// @route PUT product/:id
-// @desc update product
-// @access private
-router.put('/:id', async (req, res) => {
-    const newProduct = new Product({
-        name: req.body.name,
-        price: req.body.price,
-        description: req.body.description,
-        imgName: req.body.imgName,
-        category: req.body.category,
-        sizes: req.body.sizes,
-    });
-
-    try {
-        const productId = req.params.id;
-        if (!productId) {
-            throw Error('No product found!');
-        }
-
-        const updatedProduct = await Product.update(id, newProduct);
-        if (!updatedProduct) {
-            throw Error('Error occured when updating product!');
-        };
-
-        res.status(200).json(updatedProduct);
-    } catch (error) {
-        res.status(400).json({ msg: error.message });
     }
 });
 

@@ -15,7 +15,7 @@ const orderSchema = new Schema({
     //     type: String,
     //     required: true
     // },
-    // comment: {
+    // coment: {
     //     type: String,
     //     required: true
     // },
@@ -35,7 +35,7 @@ const orderSchema = new Schema({
     //     type: String,
     //     required: true
     // },
-    // products: {
+    // cart: {
     //     type: String,
     //     required: true
     // }

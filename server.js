@@ -7,7 +7,7 @@ const config = require('./config');
 //import routes
 const productRoutes = require('./routes/product');
 
-const PORT = config.PORT;
+const PORT = config.PORT || 5000;
 
 const app = express();
 

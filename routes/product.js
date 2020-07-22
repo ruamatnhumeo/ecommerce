@@ -78,7 +78,7 @@ router.post('/', async (req, res) => {
 
 // @route DELETE product/:id
 // @desc remove product
-// @access private
+// @access private for admin
 router.delete('/:id', async (req, res) => {
     try {
         const productWillRemove = await Product.findById(req.params.id);
@@ -102,7 +102,7 @@ router.delete('/:id', async (req, res) => {
 
 // @route PUT product/:id
 // @desc update product
-// @access private
+// @access private for admin
 router.put('/:id', async (req, res) => {
     const newProduct = new Product({
         name: req.body.name,

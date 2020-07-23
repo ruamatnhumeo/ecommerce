@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 
 const bodyParser =require('body-parser');
 const config = require('./config');
+const cors = require('cors');
 
 //import routes
 const productRoutes = require('./routes/product');
@@ -14,6 +15,8 @@ const PORT = config.PORT || 5000;
 
 const app = express();
 
+// CORS Middleware
+app.use(cors());
 //Bodyparser middleware
 app.use(bodyParser.json());
 

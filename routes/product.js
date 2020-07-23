@@ -2,10 +2,11 @@ const express = require("express");
 const router = express.Router();
 
 const Product = require("../models/Product");
+const authMiddleware = require('../middleware/auth.middleware');
 
 // @route GET /
 // @desc get all products
-// @access private
+// @access public
 router.get("/", async (req, res) => {
   try {
     const products = await Product.find();
@@ -38,7 +39,7 @@ router.get("/:id", async (req, res) => {
 // @route POST /
 // @desc create/add a product
 // @access private for admin
-router.post("/", async (req, res) => {
+router.post("/", authMiddleware, async (req, res) => {
   const newProduct = new Product({
     name: req.body.name,
     price: req.body.price,
@@ -63,7 +64,7 @@ router.post("/", async (req, res) => {
 // @route DELETE /:id
 // @desc remove product
 // @access private for admin
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", authMiddleware,async (req, res) => {
   try {
     const productWillRemove = await Product.findById(req.params.id);
     if (!productWillRemove) {
@@ -87,7 +88,7 @@ router.delete("/:id", async (req, res) => {
 // @route PATCH /:id
 // @desc update product
 // @access private for admin
-router.patch("/:id", async (req, res) => {
+router.patch("/:id", authMiddleware,async (req, res) => {
   const newProduct = {
     name: req.body.name,
     price: req.body.price,

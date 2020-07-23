@@ -2,11 +2,12 @@ const express = require('express');
 const router = express.Router();
 
 const Order = require('../models/Order');
+const authMiddleware = require('../middleware/auth.middleware');
 
 // @route GET /
 // @desc get all Orders for admin
 // @access private for admin
-router.get('/', async (req, res) => {
+router.get('/', authMiddleware,async (req, res) => {
     try {
         const Orders = await Order.find();
         if (!Orders) {
@@ -20,9 +21,9 @@ router.get('/', async (req, res) => {
 });
 
 // @route GET /:id
-// @desc get Order by id for user / history order
+// @desc get orders by id for user / history order
 // @access private for user
-router.get('/:id', async (req, res) => {
+router.get('/:id', authMiddleware,async (req, res) => {
     try {
         const historyCondition = {
             userId : req.params.id
@@ -68,7 +69,7 @@ router.post('/', async (req, res) => {
 // @route DELETE /:id
 // @desc remove order
 // @access private for admin
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', authMiddleware,async (req, res) => {
     try {
         const orderWillRemove = await Order.findById(req.params.id);
         if (!orderWillRemove) {

@@ -2,11 +2,13 @@ const express = require('express');
 const router = express.Router();
 
 const User = require('../models/User');
+const authMiddleware = require('../middleware/auth.middleware');
 
 //@route   GET /
 //@desc    Get all users
 //@access  Private for admin
-router.get('/', async (req, res) => {
+router.get('/', authMiddleware, async (req, res) => {
+
   try {
     const users = await User.find();
     if (!users) throw Error('No users exist');
@@ -19,7 +21,7 @@ router.get('/', async (req, res) => {
 // @route DELETE user/:id
 // @desc remove user
 // @access private for admin
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', authMiddleware,async (req, res) => {
     try {
         const userWillRemove = await User.findById(req.params.id);
         if (!userWillRemove) {

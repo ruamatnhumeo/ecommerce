@@ -7,6 +7,8 @@ const jwt = require("jsonwebtoken");
 const config = require("../config");
 const JWT_SECRET = config.JWT_SECRET;
 
+const authMiddleware = require('../middleware/auth.middleware');
+
 // @route POST /login
 // @desc login user
 // @access public
@@ -114,7 +116,7 @@ router.post("/register", async (req, res) => {
 // @route GET /:id
 // @desc get user data
 // @access private
-router.get("/:id", async (req, res) => {
+router.get("/:id", authMiddleware,async (req, res) => {
   try {
     //get user data without password
     const user = await User.findById(req.params.id).select("-password");
@@ -131,7 +133,7 @@ router.get("/:id", async (req, res) => {
 // @route PATCH /:id
 // @desc update user profile
 // @access private
-router.patch("/:id", async (req, res) => {
+router.patch("/:id", authMiddleware,async (req, res) => {
   const newUser = {
     name: req.body.name,
     email: req.body.email,

@@ -4,8 +4,11 @@
   "description": "shopping mern stack",
   "main": "server.js",
   "scripts": {
+    "client-install": "npm install --prefix client",
+    "client": "npm start --prefix client",
     "server": "nodemon server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\" "
   },
   "author": "ruamatnhumeo",
   "license": "MIT",

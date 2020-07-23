@@ -1,13 +1,14 @@
 const express = require('express');
 const router = express.Router();
-
 const User = require('../models/User');
+
 const authMiddleware = require('../middleware/auth.middleware');
+const adminMiddleware = require('../middleware/admin.middleware');
 
 //@route   GET /
 //@desc    Get all users
 //@access  Private for admin
-router.get('/', authMiddleware, async (req, res) => {
+router.get('/', authMiddleware, adminMiddleware, async (req, res) => {
 
   try {
     const users = await User.find();
@@ -21,7 +22,7 @@ router.get('/', authMiddleware, async (req, res) => {
 // @route DELETE user/:id
 // @desc remove user
 // @access private for admin
-router.delete('/:id', authMiddleware,async (req, res) => {
+router.delete('/:id', authMiddleware, adminMiddleware,async (req, res) => {
     try {
         const userWillRemove = await User.findById(req.params.id);
         if (!userWillRemove) {

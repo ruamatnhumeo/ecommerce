@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 const Product = require("../models/Product");
-const authMiddleware = require('../middleware/auth.middleware');
+const authMiddleware = require("../middleware/auth.middleware");
+const adminMiddleware = require("../middleware/admin.middleware");
 
 // @route GET /
 // @desc get all products
@@ -39,7 +40,7 @@ router.get("/:id", async (req, res) => {
 // @route POST /
 // @desc create/add a product
 // @access private for admin
-router.post("/", authMiddleware, async (req, res) => {
+router.post("/", authMiddleware, adminMiddleware, async (req, res) => {
   const newProduct = new Product({
     name: req.body.name,
     price: req.body.price,
@@ -64,7 +65,7 @@ router.post("/", authMiddleware, async (req, res) => {
 // @route DELETE /:id
 // @desc remove product
 // @access private for admin
-router.delete("/:id", authMiddleware,async (req, res) => {
+router.delete("/:id", authMiddleware, adminMiddleware, async (req, res) => {
   try {
     const productWillRemove = await Product.findById(req.params.id);
     if (!productWillRemove) {
@@ -88,7 +89,7 @@ router.delete("/:id", authMiddleware,async (req, res) => {
 // @route PATCH /:id
 // @desc update product
 // @access private for admin
-router.patch("/:id", authMiddleware,async (req, res) => {
+router.patch("/:id", authMiddleware, adminMiddleware, async (req, res) => {
   const newProduct = {
     name: req.body.name,
     price: req.body.price,

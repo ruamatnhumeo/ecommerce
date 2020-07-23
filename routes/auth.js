@@ -34,7 +34,7 @@ router.post("/login", async (req, res) => {
     }
 
     //create/sign token
-    const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: 3600 });
+    const token = jwt.sign({ id: user._id, isAdmin: user.isAdmin }, JWT_SECRET, { expiresIn: 3600 });
 
     if (!token) {
       throw Error("Couldnt sign the token");
@@ -96,7 +96,7 @@ router.post("/register", async (req, res) => {
     }
 
     //create/sign token
-    const token = jwt.sign({ id: savedUser._id }, JWT_SECRET, {
+    const token = jwt.sign({ id: savedUser._id, isAdmin: user.isAdmin}, JWT_SECRET, {
       expiresIn: 3600,
     });
 

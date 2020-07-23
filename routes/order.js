@@ -3,7 +3,7 @@ const router = express.Router();
 
 const Order = require('../models/Order');
 
-// @route GET /Orders
+// @route GET /
 // @desc get all Orders for admin
 // @access private for admin
 router.get('/', async (req, res) => {
@@ -19,14 +19,13 @@ router.get('/', async (req, res) => {
     }
 });
 
-// @route GET /Order/:id
+// @route GET /:id
 // @desc get Order by id for user / history order
 // @access private for user
 router.get('/:id', async (req, res) => {
     try {
-        const userId = req.params.id;
         const historyCondition = {
-            fromId : userId
+            userId : req.params.id
         };
         const history = await Order.find(historyCondition);
         if (!history) {
@@ -39,19 +38,19 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// @route POST /Order
+// @route POST /
 // @desc create/add an order
 // @access public
 router.post('/', async (req, res) => {
     const newOrder = new Order({
         number: req.body.number,
-        // totalPrice: req.body.totalPrice,
-        // coment: req.body.coment,
-        // toStreet: req.body.toStreet,
-        // toCity: req.body.toCity,
-        // fromId: req.body._id,
-        // paymentType: req.body.paymentType,
-        // cart: req.body.cart
+        totalPrice: req.body.totalPrice,
+        coment: req.body.coment,
+        toStreet: req.body.toStreet,
+        toCity: req.body.toCity,
+        fromId: req.body._id,
+        paymentType: req.body.paymentType,
+        cart: req.body.cart
     });
 
     try {
@@ -66,8 +65,8 @@ router.post('/', async (req, res) => {
     }
 });
 
-// @route DELETE Order/:id
-// @desc remove Order
+// @route DELETE /:id
+// @desc remove order
 // @access private for admin
 router.delete('/:id', async (req, res) => {
     try {

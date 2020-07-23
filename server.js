@@ -6,6 +6,9 @@ const config = require('./config');
 
 //import routes
 const productRoutes = require('./routes/product');
+const orderRoutes = require('./routes/order');
+const userRoutes = require('./routes/user');
+const authRoutes = require('./routes/auth');
 
 const PORT = config.PORT || 5000;
 
@@ -15,10 +18,14 @@ const app = express();
 app.use(bodyParser.json());
 
 //apply routes
-app.use('/products', productRoutes);
+app.use('/product', productRoutes);
+app.use('/order', orderRoutes);
+app.use('/user', userRoutes);
+app.use('/auth', authRoutes);
 
 //DB config
-const db = `${config.MONGO_URI}/${config.MONGO_DB_NAME}`;
+// const db = `${config.MONGO_URI}/${config.MONGO_DB_NAME}`;
+const db = `${config.MONGO_URI}`;
 
 //connect moongose
 mongoose

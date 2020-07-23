@@ -11,26 +11,26 @@ const productSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    price: {
-        type: String,
-        required: true
-    },
-    desc: {
-        type: String,
-        required: true
-    },
-    imgName: {
-        type: String,
-        required: true
-    },
-    category: {
-        type: String,
-        required: true
-    },
-    sizes: {
-        type: Map,
-        of: String
-    }, 
+    // price: {
+    //     type: String,
+    //     required: true
+    // },
+    // desc: {
+    //     type: String,
+    //     required: true
+    // },
+    // imgName: {
+    //     type: String,
+    //     required: true
+    // },
+    // category: {
+    //     type: String,
+    //     required: true
+    // },
+    // sizes: {
+    //     type: Map,
+    //     of: String
+    // }, 
 
 });
 

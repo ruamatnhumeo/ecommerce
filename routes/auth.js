@@ -54,7 +54,7 @@ router.post("/login", async (req, res) => {
 // @route POST /register
 // @desc register user
 // @access public
-router.post("/login", async (req, res) => {
+router.post("/register", async (req, res) => {
   const { email, password, name } = req.body;
 
   // Simple validation
@@ -117,7 +117,7 @@ router.post("/login", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     //get user data without password
-    const user = await Product.findById(req.params.id).select("-password");
+    const user = await User.findById(req.params.id).select("-password");
     if (!user) {
       throw Error("No user found!");
     }
@@ -128,11 +128,11 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// @route PUT /:id
+// @route PATCH /:id
 // @desc update user profile
 // @access private
-router.put("/:id", async (req, res) => {
-  const newUser = new User({
+router.patch("/:id", async (req, res) => {
+  const newUser = {
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
@@ -140,15 +140,17 @@ router.put("/:id", async (req, res) => {
     street: req.body.street,
     city: req.body.city,
     phone: req.body.phone,
-  });
+  };
 
   try {
-    const userId = req.params.id;
+    const userId = {
+      _id: req.params.id
+    };
     if (!userId) {
       throw Error("No user exist!");
     }
 
-    const updatedUser = await Product.update(id, newProduct);
+    const updatedUser = await User.update(userId, { $set: newUser });
     if (!updatedUser) {
       throw Error("Error occured when updating user!");
     }

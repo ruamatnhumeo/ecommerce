@@ -43,4 +43,4 @@ const orderSchema = new Schema({
 
 const Order = mongoose.model('order', orderSchema);
 
-module.exports = Product;
+module.exports = Order;

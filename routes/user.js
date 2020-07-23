@@ -3,7 +3,7 @@ const router = express.Router();
 
 const User = require('../models/User');
 
-//@route   GET api/users
+//@route   GET /
 //@desc    Get all users
 //@access  Private for admin
 router.get('/', async (req, res) => {
@@ -21,12 +21,12 @@ router.get('/', async (req, res) => {
 // @access private for admin
 router.delete('/:id', async (req, res) => {
     try {
-        const userWillRemove = await user.findById(req.params.id);
+        const userWillRemove = await User.findById(req.params.id);
         if (!userWillRemove) {
             throw Error('No user found!');
         };
 
-        const removed = await userWillDelete.remove();
+        const removed = await userWillRemove.remove();
         if (!removed) {
             throw Error('Error occured when removing user!');
         }

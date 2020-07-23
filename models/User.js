@@ -21,16 +21,13 @@ const UserSchema = new Schema({
     default: Date.now
   },
   street: {
-    type: String,
-    required: true
+    type: String
   },
   city: {
-    type: String,
-    required: true
+    type: String
   },
   phone: {
-    type: String,
-    required: true
+    type: String
   },
   isAdmin: {
     type: Boolean,

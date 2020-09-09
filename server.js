@@ -42,3 +42,5 @@ mongoose
 
 
 app.listen(PORT, () => console.log(`Server started on PORT ${PORT}`));
+
+//mongodb+srv://vandat1999123:vandat1999@ecommerce.as1ox.mongodb.net/ecommerce?retryWrites=true&w=majority

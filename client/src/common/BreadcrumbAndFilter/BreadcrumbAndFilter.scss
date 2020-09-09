@@ -1,0 +1,21 @@
+.breadcrumb-and-filter {
+  position: fixed;
+  top: 45px;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+
+  &__viewport {
+    padding: 0 12px;
+    margin: 0;
+    height: 45px;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #000000;
+    background-color: #fcfcfc;
+  }
+}

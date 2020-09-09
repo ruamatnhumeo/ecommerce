@@ -1,0 +1,24 @@
+.product-img-list {
+  width: 55%;
+
+  &__inner {
+    width: 100%;
+    border-right: 1px solid #000000;
+    overflow: hidden;
+  }
+  &__list-content {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    & > li {
+        position: relative;
+        border-bottom: 1px solid #000000;
+
+        & > img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+  }
+}

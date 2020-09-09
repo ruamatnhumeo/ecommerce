@@ -1,35 +1,31 @@
 .footer {
     padding: .5rem;
-    font-size: .8rem;
-    background-color: #b5bfca;
-    
+    font-size: 13px;
+    font-weight: 300;
+
+    background: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+
     & a,
     & a:hover{
         color: #000000;
     };
 
-    &__connect-list {
-        margin: 60px 0 0 0;
-        list-style-type: none;
-        padding: 0;
+    &__subcol {
+        margin: 1rem 0;
+
+        & > p {
+            margin-bottom: 4px;
+        }
         
-        display: flex;
-        flex-direction: row;
+        & > h6 {
+        font-size: 14px;
+        font-weight: 300;
+        text-transform: uppercase;
 
-        &>li {
-            margin: 4px 6px 0 0;
-        }
+        margin: 12px 0 14px 0;
+    }
     };
 
-    &__client-service {
-        & > p {
-            margin-bottom: 4px;
-        }
-    };
-
-    &__contact {
-        & > p {
-            margin-bottom: 4px;
-        }
-    };
 }

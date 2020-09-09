@@ -1,0 +1,11 @@
+.search-form {
+
+    flex-grow: 1;
+    margin: 6px 0 0 6px;
+    &__input {
+        width: 100%;
+        font-size: 14px;
+        outline: none;
+        border: none;
+    }
+}

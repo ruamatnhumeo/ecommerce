@@ -1,0 +1,13 @@
+.product-list {
+  
+  padding-top: 45px;
+
+  & > ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    overflow: hidden;
+  }
+}

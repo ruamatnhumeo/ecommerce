@@ -1,0 +1,37 @@
+.search {
+  height: 100%;
+  width: 100%;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__toggle {
+    cursor: pointer;
+  }
+
+  &__close-toggle {
+    cursor: pointer;
+  }
+
+  &__panel {
+    position: absolute;
+    top: 44px;
+    left: 0;
+
+    max-height: 0px;
+    width: calc(100% + .5px);
+    transition: max-height 0.25s ease-in;
+    overflow: hidden;
+
+    border-bottom: 1px solid #000000;
+    border-right: 1px solid #000000;
+    border-left: 1px solid #000000;
+  }
+
+  &__panel--open{
+    max-height: 450px;
+  }
+}

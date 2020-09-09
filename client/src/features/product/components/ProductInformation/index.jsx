@@ -1,0 +1,73 @@
+import React from "react";
+import PropTypes from "prop-types";
+import "./ProductInformation.scss";
+
+ProductInformation.propTypes = {
+  productInfo: PropTypes.object.isRequired,
+};
+
+function ProductInformation(props) {
+  const { productInfo, currency } = props;
+  const productSizes = Object.keys(productInfo.size);
+  const finalPrice = currency + productInfo.price;
+
+  return (
+    <section className="product-information">
+      <div className="product-information__inner">
+        <div className="buy-place">
+          <div className="buy-place__part">
+            <span>{finalPrice}</span>
+          </div>
+          <button className="buy-place__part buy-place__button" type="button">
+            <span>Add to card</span>
+          </button>
+        </div>
+        <div className="main-place">
+          <div className="main-place__name">
+            <span>{productInfo.name}</span>
+          </div>
+        </div>
+        <div className="options-place">
+          <div className="options-place__part options-place__color">
+            <span className="options-place__title">Color:</span>
+            <span>{productInfo.color}</span>
+          </div>
+          <div className="options-place__part options-place__size">
+            <div>
+            <span className="options-place__title">Size:</span>
+            <span className="options-place__size__guide-button">Size Guide</span>
+            </div>
+            <ul>
+              {productSizes.map((size, index) => (
+                <li key={index}>{size}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div className="shipping-place">
+          <button type="button"><span>Shipping & return</span></button>
+        </div>
+        <div className="product-details">
+          <div className="product-details__title">
+            <span>Product Details</span>
+          </div>
+          <div className="product-details__id">
+            <span>Product ID:{productInfo.id}</span>
+          </div>
+          <div className="product-details__composition">
+            <span>Composition:{productInfo.composition}</span>
+          </div>
+          <div className="product-details__list">
+            <ul>
+              {productInfo.description.map((detail, index) => (
+                <li key={index}>{detail}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default ProductInformation;

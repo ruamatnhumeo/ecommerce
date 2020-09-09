@@ -1,0 +1,20 @@
+.menu {
+  
+  &__viewport {
+    position: absolute;
+    top: 45px;
+    left: 0px;
+    height: calc(100vh - 45px);
+    width: 100%;
+    background: #fcfcfc;
+
+    transform: translateX(100%);
+    transition: transform .25s ease-in;
+
+    &--open {
+      transform: translateX(0%);
+    }
+  }
+
+
+}

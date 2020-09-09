@@ -1,0 +1,15 @@
+.search-list {
+  
+  background-color: #fcfcfc;
+
+  & > ul {
+    display: flex;
+    flex-flow: column;
+
+    padding: 0;
+    margin: 18px 12px;
+
+    font-size: 14px;
+    list-style: none;
+  }
+}

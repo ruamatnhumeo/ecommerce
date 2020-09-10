@@ -11,7 +11,7 @@ function ForgetPassword() {
 		setIsOpen(!isOpen);
 	};
 
-	const handleSubmit = (event) => {
+	const handleSubmit = () => {
 		console.log(inputRef.current);
 		authApi.forgetPassword(inputRef.current.value);
 	};

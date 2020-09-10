@@ -1,5 +1,5 @@
 import { returnErrors } from "./errorAction";
-import cartApi from "../api/cartApi";
+import orderApi from "../api/orderApi";
 
 import { CART_ADD, CART_REMOVE, CART_CHECKOUT, CART_CLEAR } from "./types";
 
@@ -56,7 +56,7 @@ export const cartCheckOut = (cart, total) => async (dispatch) => {
   try {
     //response:checkout = true/false
     const newOrder = { ...cart, total };
-    const response = await cartApi.checkout(newOrder);
+    const response = await orderApi.checkout(newOrder);
 
     dispatch({
       type: CART_CHECKOUT,

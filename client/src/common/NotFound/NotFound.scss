@@ -1,13 +1,13 @@
 .notFound {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
-    & > span {
-        margin: 0 .5rem;
-        text-transform: uppercase;
-        font-size: 2rem;
-        font-weight: 600; 
-    }
+	& > span {
+		margin: 0 0.5rem;
+		text-transform: uppercase;
+		font-size: 2rem;
+		font-weight: 600;
+	}
 }

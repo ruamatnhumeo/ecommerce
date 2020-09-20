@@ -9,7 +9,7 @@
 ### Features
 
 -   Auth: Login, Register, Reset password when forget
--       Cart
+-   Cart
 -   Product
 -   Search
 

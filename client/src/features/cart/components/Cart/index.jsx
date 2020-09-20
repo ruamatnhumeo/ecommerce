@@ -1,17 +1,16 @@
 import React  from "react";
 import "./Cart.scss";
-import cartLogo from "../../../../assets/images/shop.svg";
 
 import ProductInCart from "../ProductInCart";
 
 function Cart(props) {
   const {
-    cartOpen,
     cart,
     total,
+    cartOpen,
     onRemove,
     onClear,
-    onCheckout,
+    onCheckout = null,
     onCartClick,
   } = props;
   const cartClassName = !cartOpen
@@ -40,11 +39,7 @@ function Cart(props) {
     <div className="cart">
       <div className="cart__button" onClick={handleOnClick}>
         <span>
-          <img
-            src={cartLogo}
-            alt="cart"
-            style={{ width: "16px", height: "22px"}}
-          />
+			<i className="e-shopping-bag" style={{ width: "16px", height: "22px"}}></i>
           <div className="cart__button__count">
             <span>{cart.length > 0 ? cart.length : null}</span>
           </div>

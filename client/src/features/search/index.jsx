@@ -1,55 +1,59 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef } from "react";
 
 import "./Search.scss";
 import SearchList from "./components/SearchList";
 import SearchForm from "./components/SearchForm";
-import SearchIcon from "../../assets/images/search.svg";
-import CloseIcon from "../../assets/images/remove.svg";
-import { useRef } from "react";
 
 function Search(props) {
-  const { searchs, searchPanelOpen, onSearchClick, onSearchChange} = props;
-  const inputElement = useRef(null);
-  const searchPanelClassName = !searchPanelOpen
-    ? "search__panel"
-    : "search__panel search__panel--open";
-  
-  const handleToggleClick = () => {
-    if (inputElement) {
-      inputElement.current.focus();
-    }
-    console.log(inputElement);
-    if (searchPanelOpen) return;
+	const { searchs, searchPanelOpen, onSearchClick, onSearchChange } = props;
+	const inputElement = useRef(null);
+	const searchPanelClassName = !searchPanelOpen
+		? "search__panel"
+		: "search__panel search__panel--open";
 
-    onSearchClick();
-  };
+	const handleToggleClick = () => {
+		if (inputElement) {
+			inputElement.current.focus();
+		}
 
-  const handleCloseToggleClick = () => {
+		if (searchPanelOpen) return;
 
-    onSearchClick();
-  };
+		onSearchClick();
+	};
 
+	const handleCloseToggleClick = () => {
+		onSearchClick();
+	};
 
-  return (
-    <div className="search">
-      <div className="search__content">
-        <div className="search__toggle" onClick={handleToggleClick}>
-          <img src={SearchIcon} alt="search" style={{ width: "20px" }} />
-        </div>
+	return (
+		<div className="search">
+			<div className="search__content">
+				<div className="search__toggle" onClick={handleToggleClick}>
+					<i className="e-search"></i>
+				</div>
 
-        <SearchForm inputElement={inputElement} onInputClick={handleToggleClick} refElement={inputElement}/>
-        {searchPanelOpen && (
-          <div className="search__close-toggle" onClick={handleCloseToggleClick}>
-            <img src={CloseIcon} alt="close" style={{ width: "20px" }} />
-          </div>
-        )}
-      </div>
+				<SearchForm
+					inputElement={inputElement}
+					onInputClick={handleToggleClick}
+					refElement={inputElement}
+				/>
+				{searchPanelOpen && (
+					<div
+						className="search__close-toggle"
+						onClick={handleCloseToggleClick}
+					>
+						<i className="e-x" style={{ width: "20px" }}></i>
+					</div>
+				)}
+			</div>
 
-      <section className={searchPanelClassName}>
-        <SearchList searchs={searchs}/>
-      </section>
-    </div>
-  );
+			<section className={searchPanelClassName}>
+				<div className="search__panel__inner">
+					<SearchList searchs={searchs} />
+				</div>
+			</section>
+		</div>
+	);
 }
 
 export default Search;

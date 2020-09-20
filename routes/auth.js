@@ -66,7 +66,11 @@ router.post("/login", async (req, res) => {
 				name: user.name,
 				email: user.email,
 				isAdmin: user.isAdmin,
-			},
+				password: user.password,
+				city: user.city,
+				street: user.street,
+				phone: user.phone,
+			}
 		});
 	} catch (error) {
 		res.status(400).json({ msg: error.message });
@@ -158,17 +162,30 @@ router.get("/:id", authMiddleware, async (req, res) => {
 // @desc update user profile
 // @access private
 router.patch("/:id", authMiddleware, async (req, res) => {
-	const newUser = {
-		name: req.body.name,
-		email: req.body.email,
-		password: req.body.password,
-		registerDate: req.body.registerDate,
-		street: req.body.street,
-		city: req.body.city,
-		phone: req.body.phone,
-	};
-
 	try {
+		const newPassword = req.body.password;
+		const salt = await bcrypt.genSalt(10);
+
+		if (!salt) {
+			throw Error("Something went wrong with bcrypt!");
+		}
+
+		const hashedPassword = await bcrypt.hash(newPassword, salt);
+
+		if (!hashedPassword) {
+			throw Error("Something went wrong hashing the password");
+		}
+
+		const newUser = {
+			name: req.body.name,
+			email: req.body.email,
+			password: hashedPassword,
+			registerDate: req.body.registerDate,
+			street: req.body.street,
+			city: req.body.city,
+			phone: req.body.phone,
+		};
+
 		const userId = {
 			_id: req.params.id,
 		};
@@ -233,7 +250,7 @@ router.post("/reset-password/:token", async (req, res) => {
 		const user = await User.findOne({ email: resetTokenObj.email }).exec();
 
 		const salt = await bcrypt.genSalt(10);
-		
+
 		if (!salt) {
 			throw Error("Something went wrong with bcrypt!");
 		}

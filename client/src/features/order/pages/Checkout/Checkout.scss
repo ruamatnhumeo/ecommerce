@@ -1,0 +1,16 @@
+.checkout {
+	position: relative;
+	top: 45px;
+	height: calc(100% - 45px);
+	display: flex;
+
+	&__form-layout {
+		width: 66.66%;
+	}
+
+	&__cart-layout {
+		position: relative;
+		width: 33.33%;
+		top: -45px;
+	}
+}

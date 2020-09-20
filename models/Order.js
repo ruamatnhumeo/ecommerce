@@ -3,15 +3,11 @@ const Schema = mongoose.Schema;
 
 //create Schema
 const orderSchema = new Schema({
-	number: {
-		type: String,
-		required: true,
-	},
 	date: {
 		type: Date,
 		default: Date.now,
 	},
-	totalPrice: {
+	total: {
 	    type: String,
 	    required: true
 	},
@@ -23,7 +19,7 @@ const orderSchema = new Schema({
 	    type: String,
 	    required: true
 	},
-	fromId: {
+	fromEmail: {
 	    type: String,
 	    required: true
 	},

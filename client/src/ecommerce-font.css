@@ -1,0 +1,72 @@
+@font-face {
+	font-family: "ecommerce-font";
+	src: url("assets/ecommerceFonts/ecommerce-font.eot?qww2hi");
+	src: url("assets/ecommerceFonts/ecommerce-font.eot?qww2hi#iefix")
+			format("embedded-opentype"),
+		url("assets/ecommerceFonts/ecommerce-font.ttf?qww2hi")
+			format("truetype"),
+		url("assets/ecommerceFonts/ecommerce-font.woff?qww2hi") format("woff"),
+		url("assets/ecommerceFonts/ecommerce-font.svg?qww2hi#ecommerce-font")
+			format("svg");
+	font-weight: normal;
+	font-style: normal;
+	font-display: block;
+}
+
+i {
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: "ecommerce-font" !important;
+	speak: never;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.e-copyright:before {
+	content: "\e909";
+}
+.e-shopping-bag:before {
+	content: "\e900";
+}
+.e-bookmark:before {
+	content: "\e90a";
+}
+.e-bookmark1:before {
+	content: "\e90d";
+}
+.e-search:before {
+	content: "\e90c";
+}
+.e-chevron-left:before {
+	content: "\e901";
+}
+.e-chevron-right:before {
+	content: "\e902";
+}
+.e-chevron-up:before {
+	content: "\e903";
+}
+.e-github:before {
+	content: "\e904";
+}
+.e-heart:before {
+	content: "\e905";
+}
+.e-minus:before {
+	content: "\e906";
+}
+.e-more:before {
+	content: "\e907";
+}
+.e-plus:before {
+	content: "\e908";
+}
+.e-x:before {
+	content: "\e90b";
+}

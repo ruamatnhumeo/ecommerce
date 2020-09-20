@@ -1,0 +1,23 @@
+.checkout-form {
+	width: 100%;
+	padding: 12px 25px;
+
+	&__title {
+		text-align: center;
+
+		& > h6 {
+			font-weight: 400;
+			text-transform: uppercase;
+		}
+	}
+
+	&__button {
+		text-align: center;
+
+		& > button {
+			padding: 2px 14px;
+			border: 1px solid #000000;
+			background-color: #fcfcfc;
+		}
+	}
+}

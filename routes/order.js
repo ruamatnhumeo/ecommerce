@@ -45,14 +45,12 @@ router.get("/:id", authMiddleware, async (req, res) => {
 // @access public
 router.post("/", async (req, res) => {
 	const newOrder = new Order({
-		number: req.body.number,
-		totalPrice: req.body.totalPrice,
-		coment: req.body.coment,
-		toStreet: req.body.toStreet,
+		total: req.body.total,
+		address: req.body.address,
 		toCity: req.body.toCity,
-		fromId: req.body._id,
-		paymentType: req.body.paymentType,
-		cart: req.body.cart,
+		fromEmsil: req.body.email,
+		paymentMethod: req.body.paymentMethod,
+		cart: String(req.body.cart),
 	});
 
 	try {

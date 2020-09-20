@@ -1,0 +1,34 @@
+.account {
+	&__viewport {
+		position: absolute;
+		top: 45px;
+		left: 1px;
+		height: 225px;
+		width: 100%;
+
+		overflow: hidden;
+		transition: height 0.25s ease-in;
+	}
+
+	&--open {
+		height: 225px;
+	}
+
+	&__content {
+		height: 100%;
+		border-bottom: 1px solid #000000;
+		background-color: #fcfcfc;
+
+		& > ul {
+			padding: 0;
+			height: 100%;
+			list-style: none;
+
+			& > li {
+				padding: 12px;
+				height: 45px;
+				border-bottom: 1px solid #000000;
+			}
+		}
+	}
+}

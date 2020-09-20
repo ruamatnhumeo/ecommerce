@@ -1,0 +1,21 @@
+.home {
+	height: 100%;
+	display: flex;
+
+	&__layout {
+		height: 100%;
+		width: 33.33%;
+		
+	}
+
+	&__col {
+		height: 100%;
+		width: 100%;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		border-left: 1px solid #000000;
+	}
+}

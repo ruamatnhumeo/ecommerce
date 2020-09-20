@@ -24,7 +24,6 @@ export default (state = initialState, action) => {
       };
 
     case CART_CLEAR:
-    case CART_CHECKOUT:
       return {
         ...state,
         bag: [],

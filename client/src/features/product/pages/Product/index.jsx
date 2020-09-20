@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import "./Product.scss";
@@ -6,7 +6,7 @@ import "./Product.scss";
 import { getProduct } from "../../../../flux/actions/productAction";
 import ProductImgList from "../../components/ProductImgList";
 import ProductInformation from "../../components/ProductInformation";
-import { useState } from "react";
+import { cartAdd } from "../../../../flux/actions/cartAction"
 
 function Product() {
 	const { productId } = useParams();

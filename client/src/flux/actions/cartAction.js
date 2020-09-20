@@ -52,15 +52,12 @@ export const cartRemove = (productId) => (dispatch, getState) => {
 };
 
 // checkout
-export const cartCheckOut = (cart, total) => async (dispatch) => {
+export const cartCheckOut = (newOrder) => async (dispatch) => {
   try {
-    //response:checkout = true/false
-    const newOrder = { ...cart, total };
     const response = await orderApi.checkout(newOrder);
 
     dispatch({
-      type: CART_CHECKOUT,
-      payload: response,
+      type: CART_CLEAR,
     });
 
     localStorage.clear("cart");

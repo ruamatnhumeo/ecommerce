@@ -27,7 +27,7 @@ function OrderList(props) {
 								<tr>
 									<td>{order._id}</td>
 									<td>{order.date}</td>
-									<td> {formatCurrency(order.totalPrice)}</td>
+									<td> {order.totalPrice}</td>
 									<td>{order.fromId}</td>
 									<td>{order.toCity}</td>
 									<td>

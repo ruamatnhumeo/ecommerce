@@ -1,46 +1,57 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { logout } from "../../../../flux/actions/authAction";
+import { Link } from "react-router-dom";
 
 import "./Account.scss";
 
 function Account(props) {
-  const dispatch = useDispatch();
-  const { isAdmin } = props;
+	const { accountOpen, onAccountClick, onLogout, isAdmin = false, userId } = props;
+	const viewportClassName = !accountOpen
+		? "account__viewport"
+		: "account__viewport open";
 
-  const handleLogout = () => {
-    console.log("logout");
-    dispatch(logout());
-  };
+	const handleOpenClick = () => {
+		if (!onAccountClick) return;
+		onAccountClick();
+	};
 
-  return (
-    <section className="account">
-      <div className="account-button">
-        <span>
-          <img src="#" alt="account" />
-        </span>
-      </div>
-      <div className="account__viewport">
-        <div className="account__actions">
-          <ul>
-            <li onClick={handleLogout}>
-              <a href="#">Profile</a> 
-              {/* use Link  */}
-            </li>
-            <li onClick={handleLogout}>
-              <a href="#">{isAdmin ? "Orders" : "Wishlist"}</a>
-            </li>
-            <li onClick={handleLogout}>
-              <a href="#">{isAdmin ? "Users" : "History"}</a>
-            </li>
-            <li onClick={handleLogout}>
-              <a href="#">Logout</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-  );
+	const handleLogout = () => {
+		if (!onLogout) return;
+		onLogout();
+	};
+
+	return (
+		<section className="account">
+			<div className="account-button" onClick={handleOpenClick}>
+				<span>Account</span>
+			</div>
+			<section className={viewportClassName}>
+				<div className="account__content">
+					<ul>
+						<li>
+							<Link to={`/auth/profile/:${userId}`}>Profile</Link>
+						</li>
+						<li>
+							{isAdmin ? (
+								<Link to="/order/admin">Orders</Link>
+							) : (
+								<Link to="/product/wishlist">Wishlist</Link>
+							)}
+						</li>
+						<li>
+							{isAdmin ? (
+								<Link to="/order/admin">Users</Link>
+							) : (
+								<Link to="/auth/history">History</Link>
+							)}
+						</li>
+						<li onClick={handleLogout}>
+							<a href="#">Logout</a>
+						</li>
+					</ul>
+				</div>
+			</section>
+		</section>
+	);
 }
 
 export default Account;

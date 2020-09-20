@@ -1,15 +1,13 @@
 .search-list {
-  
-  background-color: #fcfcfc;
+	padding: 14px;
+	& > ul {
+		display: flex;
+		flex-flow: column;
 
-  & > ul {
-    display: flex;
-    flex-flow: column;
+		padding: 0 0 0 22px;
+		margin: 0;
 
-    padding: 0;
-    margin: 18px 12px;
-
-    font-size: 14px;
-    list-style: none;
-  }
+		font-size: 14px;
+		list-style: none;
+	}
 }

@@ -70,7 +70,7 @@ router.post("/login", async (req, res) => {
 				city: user.city,
 				street: user.street,
 				phone: user.phone,
-			}
+			},
 		});
 	} catch (error) {
 		res.status(400).json({ msg: error.message });
@@ -211,6 +211,7 @@ router.patch("/:id", authMiddleware, async (req, res) => {
 router.post("/forget-password", async (req, res) => {
 	try {
 		const user = await User.findOne({ email: req.body.email }).exec();
+
 		if (!user) {
 			throw new Error("No user found!");
 		}
@@ -228,6 +229,7 @@ router.post("/forget-password", async (req, res) => {
 
 		res.status(200).json("success");
 	} catch (error) {
+		console.log("err");
 		res.status(400).json({ msg: error.message });
 	}
 });

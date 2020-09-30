@@ -3,53 +3,57 @@ import PropTypes from "prop-types";
 import "./SearchForm.scss";
 
 SearchForm.propTypes = {
-  onSubmit: PropTypes.func,
+	onSubmit: PropTypes.func,
 };
 
 SearchForm.defaultProps = {
-  onSubmit: null,
+	onSubmit: null,
 };
 
 export default function SearchForm(props) {
-  const { onSubmit, onInputClick, refElement } = props;
-  const [searchTerm, setSearchTerm] = useState("");
-  const valueTimeoutRef = useRef(null); //to hold value after renders
+	const { onSubmit, onInputClick, refElement } = props;
+	const [term, setTerm] = useState("");
+	const valueTimeoutRef = useRef(null); //to hold value after renders
 
-  function handleSearchTermChange(event) {
-    const { target } = event;
-    const value = target.value; //avoid when target realizing setTimeout
-    setSearchTerm(value);
+	const handleTermChange = (event) => {
+		const { target } = event;
+		const value = target.value.trim(); //avoid when target realizing setTimeout
+		setTerm(value);
 
-    if (!onSubmit) {
-      return;
-    }
+		if (!onSubmit) {
+			return;
+		}
 
-    if (valueTimeoutRef.current) {
-      clearTimeout(valueTimeoutRef.current);
-    }
-    //simple-debounce ver
-    valueTimeoutRef.current = setTimeout(() => {
-      const formValue = {
-        searchTerm: value,
-      };
+		if (valueTimeoutRef.current) {
+			clearTimeout(valueTimeoutRef.current);
+		}
 
-      onSubmit(formValue);
-    }, 300);
-  }
+		//check value to except "" string
+		if (value.length <= 0) return;
 
-  return (
-    <div className="search-form">
-      <form action="#">
-        <input
-          className="search-form__input"
-          type="text"
-          value={searchTerm}
-          onChange={handleSearchTermChange}
-          onClick={onInputClick}
-          placeholder="Search"
-          ref={refElement}
-        />
-      </form>
-    </div>
-  );
+		//simple-debounce ver
+		valueTimeoutRef.current = setTimeout(() => {
+			const formValue = {
+				term: value.trim(),
+			};
+
+			onSubmit(formValue);
+		}, 500);
+	};
+
+	return (
+		<div className="search-form">
+			<form>
+				<input
+					className="search-form__input"
+					type="text"
+					value={term}
+					onChange={handleTermChange}
+					onClick={onInputClick}
+					placeholder="Search"
+					ref={refElement}
+				/>
+			</form>
+		</div>
+	);
 }

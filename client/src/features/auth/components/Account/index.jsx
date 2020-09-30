@@ -4,10 +4,16 @@ import { Link } from "react-router-dom";
 import "./Account.scss";
 
 function Account(props) {
-	const { accountOpen, onAccountClick, onLogout, isAdmin = false, userId } = props;
+	const {
+		accountOpen,
+		onAccountClick,
+		onLogout,
+		isAdmin = false,
+		userId,
+	} = props;
 	const viewportClassName = !accountOpen
 		? "account__viewport"
-		: "account__viewport open";
+		: "account__viewport account__viewport--open";
 
 	const handleOpenClick = () => {
 		if (!onAccountClick) return;
@@ -21,8 +27,8 @@ function Account(props) {
 
 	return (
 		<section className="account">
-			<div className="account-button" onClick={handleOpenClick}>
-				<span>Account</span>
+			<div className="account__button" onClick={handleOpenClick}>
+				<div>Account</div>
 			</div>
 			<section className={viewportClassName}>
 				<div className="account__content">

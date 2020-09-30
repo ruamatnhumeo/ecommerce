@@ -7,9 +7,9 @@ const userApi = {
 		return axiosClient.get(url);
 	},
 	deleteUser: (userId) => {
-		const url = `/user/:${userId}`
-		return axiosClient.delete(url)
-	}
+		const url = `/user/:${userId}`;
+		return axiosClient.delete(url);
+	},
 };
 
 export default userApi;

@@ -3,6 +3,7 @@ import { Button, FormGroup, Alert, Spinner } from "reactstrap";
 import { FastField, Form, Formik } from "formik";
 import InputField from "../../../../custom-fields/InputField";
 import * as Yup from "yup";
+import "./Register.scss";
 
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors } from "../../../../flux/actions/errorAction";
@@ -72,65 +73,69 @@ function LoginModal() {
 
 	return (
 		<div className="register">
-			<h6 className="register__title">Register</h6>
-			{message ? <Alert color="danger">{message}</Alert> : null}
-			<Formik
-				initialValues={initialValues}
-				validationSchema={validationSchema}
-				onSubmit={handleOnSubmit}
-			>
-				{(formikProps) => {
-					const {
-						values,
-						errors,
-						touched,
-						isSubmitting,
-					} = formikProps;
-					// console.log({ values, errors, touched });
+			<div className="register__inner">
+				<h6 className="register__title">Register</h6>
+				{message ? <Alert color="danger">{message}</Alert> : null}
+				<Formik
+					initialValues={initialValues}
+					validationSchema={validationSchema}
+					onSubmit={handleOnSubmit}
+				>
+					{(formikProps) => {
+						const {
+							values,
+							errors,
+							touched,
+							isSubmitting,
+						} = formikProps;
+						// console.log({ values, errors, touched });
 
-					return (
-						<Form className="register__form">
-							<FastField
-								name="name"
-								component={InputField}
-								label="Name"
-								placeholder="name..."
-							/>
+						return (
+							<Form className="register__form">
+								<FastField
+									name="name"
+									component={InputField}
+									label="Name"
+									placeholder="name..."
+								/>
 
-							<FastField
-								name="email"
-								component={InputField}
-								label="Email"
-								placeholder="email@gmail..."
-							/>
+								<FastField
+									name="email"
+									component={InputField}
+									label="Email"
+									placeholder="email@..."
+								/>
 
-							<FastField
-								name="password"
-								type="password"
-								component={InputField}
-								label="Password"
-								placeholder="password..."
-							/>
+								<FastField
+									name="password"
+									type="password"
+									component={InputField}
+									label="Password"
+									placeholder="password..."
+								/>
 
-							<FormGroup>
-								<Button type="submit" color="success">
-									{isSubmitting && (
-										<Spinner size="sm" color="dark" />
-									)}
-									Register
-								</Button>
-							</FormGroup>
-						</Form>
-					);
-				}}
-			</Formik>
-			<div className="forget-password">
-				<a href="#" onClick={handleForgetDropdown}>Forget password!</a>
+								<FormGroup>
+									<Button type="submit" color="success">
+										{isSubmitting && (
+											<Spinner size="sm" color="dark" />
+										)}
+										Register
+									</Button>
+								</FormGroup>
+							</Form>
+						);
+					}}
+				</Formik>
+				<div className="forget-password">
+					<a href="#" onClick={handleForgetDropdown}>
+						Forget password!
+					</a>
+				</div>
+				<ForgetPassword
+					isOpen={isForgetDropdownOpen}
+					onClose={handleForgetDropdown}
+				/>
 			</div>
-			<ForgetPassword
-				isOpen={isForgetDropdownOpen}
-				onClose={handleForgetDropdown}
-			/>
 		</div>
 	);
 }

@@ -1,35 +1,30 @@
-import {
-  CART_CLEAR,
-  CART_ADD,
-  CART_REMOVE,
-  CART_CHECKOUT,
-} from "../actions/types";
+import { CART_CLEAR, CART_ADD, CART_REMOVE } from "../actions/types";
 
 const initialState = {
-  bag: JSON.parse(localStorage.getItem("cart")) || [],
+	bag: JSON.parse(localStorage.getItem("cart")) || [],
 };
 
 export default (state = initialState, action) => {
-  switch (action.type) {
-    case CART_ADD: 
-      return {
-        ...state,
-        bag: action.payload,
-      };
+	switch (action.type) {
+		case CART_ADD:
+			return {
+				...state,
+				bag: action.payload,
+			};
 
-    case CART_REMOVE: 
-      return {
-        ...state,
-        bag: action.payload,
-      };
+		case CART_REMOVE:
+			return {
+				...state,
+				bag: action.payload,
+			};
 
-    case CART_CLEAR:
-      return {
-        ...state,
-        bag: [],
-      };
+		case CART_CLEAR:
+			return {
+				...state,
+				bag: [],
+			};
 
-    default:
-      return state;
-  }
+		default:
+			return state;
+	}
 };

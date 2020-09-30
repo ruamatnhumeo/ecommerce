@@ -18,12 +18,14 @@ const authApi = {
 		return axiosClient.patch(url, profile);
 	},
 	forgetPassword: (email) => {
+		const body = JSON.stringify({ email });
 		const url = "/auth/forget-password";
-		return axiosClient.get(url, email);
+		return axiosClient.post(url, body);
 	},
 	resetPassword: (password) => {
+		const body = JSON.stringify({ password });
 		const url = "/auth/reset-password";
-		return axiosClient.get(url, password);
+		return axiosClient.post(url, body);
 	},
 };
 

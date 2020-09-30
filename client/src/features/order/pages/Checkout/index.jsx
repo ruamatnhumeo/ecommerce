@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
 import "./Checkout.scss";
 
 import CheckoutForm from "../../components/CheckoutForm";
@@ -13,7 +12,6 @@ import {
 
 function Checkout() {
 	const dispatch = useDispatch();
-
 	const cart = useSelector((state) => state.cart.bag);
 
 	const total = cart.reduce((total, next) => {
@@ -21,15 +19,10 @@ function Checkout() {
 		total += totalEachProduct;
 	}, 0);
 
-	const [cartOpen, setCartOpen] = useState(false);
-
 	const handleCheckoutSubmit = (checkoutForm) => {
 		const newOrder = { ...checkoutForm, cart, total };
 		dispatch(cartCheckOut(newOrder));
 	};
-
-	//cart actions
-	const handleCartOpenClick = (cart) => {};
 
 	const handleRemoveCart = (productId) => {
 		dispatch(cartRemove(productId));
@@ -42,9 +35,7 @@ function Checkout() {
 	return (
 		<div className="checkout">
 			<div className="checkout__form-layout">
-				<CheckoutForm
-					onCheckoutSubmit={handleCheckoutSubmit}
-				/>
+				<CheckoutForm onCheckoutSubmit={handleCheckoutSubmit} />
 			</div>
 
 			<div className="checkout__cart-layout">
@@ -53,7 +44,6 @@ function Checkout() {
 					cartOpen={true}
 					cart={cart}
 					total={total}
-					onCartClick={handleCartOpenClick}
 					onRemove={handleRemoveCart}
 					onClear={handleClearCart}
 				/>

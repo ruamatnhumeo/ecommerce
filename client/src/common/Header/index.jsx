@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import queryString from "query-string";
 
 import "./Header.scss";
 import Menu from "../Menu";
@@ -29,7 +30,7 @@ function Header() {
 	if (user) {
 		isAdmin = user.isAdmin;
 		userId = user.userId;
-	} 
+	}
 
 	const cart = useSelector((state) => state.cart.bag);
 
@@ -44,8 +45,8 @@ function Header() {
 	const [meesage, setMessage] = useState(null);
 	const [cartOpen, setCartOpen] = useState(false);
 	const [searchPanelOpen, setSearchPanelOpen] = useState(false);
-	const [searchTerm, setSearchTerm] = useState({});
-	const [searchs, setSearchs] = useState([]);
+	const [searchFilter, setSearchFilter] = useState(null);
+	const [searchs, setSearchs] = useState(null);
 
 	//handle open&close panel
 	const handleBackDropClick = () => {
@@ -177,7 +178,10 @@ function Header() {
 	useEffect(() => {
 		async function fetchSearchs() {
 			try {
-				const response = await productApi.getSearchProducts(searchTerm);
+				const paramsString = queryString.stringify(searchFilter);
+				const response = await productApi.getSearchProducts(
+					paramsString
+				);
 				const responseJSON = await response.json();
 				setSearchs(responseJSON);
 			} catch (error) {
@@ -185,12 +189,15 @@ function Header() {
 			}
 		}
 
-		fetchSearchs(searchs);
-	}, [searchTerm]);
+		if (!searchFilter) return;
+		console.log(searchFilter);
+		fetchSearchs(searchFilter);
+	}, [searchFilter]);
 
 	const handleSearchChange = (formValue) => {
-		setSearchTerm({
-			title_like: formValue.searchTerm,
+		setSearchFilter({
+			...searchFilter,
+			search_term: formValue.term,
 		});
 	};
 
@@ -199,7 +206,7 @@ function Header() {
 			<nav className="header__viewport">
 				<div className="header__part header__logo">
 					<div className="header__logo-content">
-						<a href="#">TEAMRABBIT</a>
+						<a href="http://localhost:3000">TEAMRABBIT</a>
 					</div>
 				</div>
 

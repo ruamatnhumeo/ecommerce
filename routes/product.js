@@ -35,8 +35,9 @@ router.get("/", async (req, res) => {
 // @route GET /:id
 // @desc get product by id
 // @access public
-router.get("/:id/detail", async (req, res) => {
+router.get("/detail/:id", async (req, res) => {
 	const _id = req.params.id;
+	console.log(_id);
 
 	try {
 		if (_id.match(/^[0-9a-fA-F]{24}$/)) {

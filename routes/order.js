@@ -8,7 +8,7 @@ const adminMiddleware = require("../middleware/admin.middleware");
 // @route GET /
 // @desc get all Orders for admin
 // @access private for admin
-router.get("/", authMiddleware, adminMiddleware, async (req, res) => {
+router.get("/", async (req, res) => {
 	try {
 		const Orders = await Order.find();
 		if (!Orders) {
@@ -48,7 +48,7 @@ router.post("/", async (req, res) => {
 		total: req.body.total,
 		address: req.body.address,
 		toCity: req.body.toCity,
-		fromEmsil: req.body.email,
+		fromEmail: req.body.email,
 		paymentMethod: req.body.paymentMethod,
 		cart: String(req.body.cart),
 	});

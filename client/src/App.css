@@ -9,6 +9,17 @@
 ul {
 	list-style-type: none;
 }
+a {
+	color: #000000;
+}
+a:hover {
+	color: #000000;
+}
+
+button {
+	user-select: none;
+	outline: none;
+}
 
 .App {
 	font-family: "Roboto", "Ubuntu", sans-serif;

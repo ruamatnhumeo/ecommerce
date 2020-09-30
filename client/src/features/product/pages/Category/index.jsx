@@ -28,6 +28,7 @@ function Category() {
 	}
 
 	useEffect(() => {
+		console.log(category);
 		dispatch(getCategory(category));
 	}, [category]);
 
@@ -36,12 +37,12 @@ function Category() {
 	};
 
 	const handleProductClick = (productId) => {
-		const productUrl = `/product/${productId}/detail`;
+		const productUrl = `/product/detail/${productId}`;
 		history.push(productUrl);
 	};
 
 	const handleUpdateClick = (productId) => {
-		const productUrl = `/product/${productId}/update`;
+		const productUrl = `/product/detail/${productId}/update`;
 		history.push(productUrl);
 	};
 

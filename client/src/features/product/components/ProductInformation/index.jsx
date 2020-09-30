@@ -18,7 +18,7 @@ function ProductInformation(props) {
 			name: product.name,
 			quantity: 1,
 			size: product.size,
-			price: product.price,
+			price: Number(product.price),
 			img: product.imgList[0],
 		};
 
@@ -35,6 +35,7 @@ function ProductInformation(props) {
 					<button
 						className="buy-place__part buy-place__button"
 						type="button"
+						onClick={handleAdd}
 					>
 						<span>Add to card</span>
 					</button>
@@ -46,12 +47,16 @@ function ProductInformation(props) {
 				</div>
 				<div className="options-place">
 					<div className="options-place__part options-place__color">
-						<span className="options-place__title">Color:</span>
-						<span>{product.color}</span>
+						<span className="options-place__title product-information__title">
+							Color:
+						</span>
+						<div>{product.color}</div>
 					</div>
 					<div className="options-place__part options-place__size">
 						<div>
-							<span className="options-place__title">Size:</span>
+							<span className="options-place__title product-information__title">
+								Size:
+							</span>
 							<span className="options-place__size__guide-button">
 								Size Guide
 							</span>
@@ -69,7 +74,7 @@ function ProductInformation(props) {
 					</button>
 				</div>
 				<div className="product-details">
-					<div className="product-details__title">
+					<div className="product-details__title product-information__title">
 						<span>Product Details</span>
 					</div>
 					<div className="product-details__id">

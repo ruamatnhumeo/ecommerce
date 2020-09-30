@@ -4,16 +4,24 @@ import NotFound from "../../common/NotFound";
 import CheckoutPage from "./pages/Checkout";
 import OrdersPage from "./pages/Orders";
 
-function Product(props) {
-  const match = useRouteMatch();
+function Order() {
+	const match = useRouteMatch();
 
-  return (
-      <Switch>
-        <Route exact path={`${match.url}/checkout`} component={CheckoutPage} />
-        <Route exact path={`${match.url}/admin/orders`} component={OrdersPage} />
-        <Route component={NotFound} />
-      </Switch>
-  );
+	return (
+		<Switch>
+			<Route
+				exact
+				path={`${match.url}/checkout`}
+				component={CheckoutPage}
+			/>
+			<Route
+				exact
+				path={`${match.url}/admin/orders`}
+				component={OrdersPage}
+			/>
+			<Route component={NotFound} />
+		</Switch>
+	);
 }
 
-export default Product;
+export default Order;

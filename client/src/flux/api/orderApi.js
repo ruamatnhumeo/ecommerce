@@ -11,8 +11,9 @@ const orderApi = {
 		return axiosClient.delete(url);
 	},
 	checkout: (newOrder) => {
+		const body = JSON.stringify(newOrder);
 		const url = "/order/";
-		return axiosClient.post(url, newOrder);
+		return axiosClient.post(url, body);
 	},
 };
 

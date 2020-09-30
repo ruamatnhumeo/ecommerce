@@ -1,17 +1,29 @@
 .account {
+	&__button {
+		text-transform: uppercase;
+		font-size: 13px;
+		font-weight: 600;
+		color: #000000;
+		cursor: pointer;
+
+		&:hover {
+			color: #000000;
+			text-decoration: underline;
+		}
+	}
 	&__viewport {
 		position: absolute;
 		top: 45px;
 		left: 1px;
-		height: 225px;
+		height: 0;
 		width: 100%;
 
 		overflow: hidden;
 		transition: height 0.25s ease-in;
-	}
 
-	&--open {
-		height: 225px;
+		&--open {
+			height: 225px;
+		}
 	}
 
 	&__content {

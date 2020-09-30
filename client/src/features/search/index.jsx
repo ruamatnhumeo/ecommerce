@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-
 import "./Search.scss";
 import SearchList from "./components/SearchList";
 import SearchForm from "./components/SearchForm";
@@ -35,6 +34,7 @@ function Search(props) {
 				<SearchForm
 					inputElement={inputElement}
 					onInputClick={handleToggleClick}
+					onSubmit={onSearchChange}
 					refElement={inputElement}
 				/>
 				{searchPanelOpen && (
@@ -49,7 +49,7 @@ function Search(props) {
 
 			<section className={searchPanelClassName}>
 				<div className="search__panel__inner">
-					<SearchList searchs={searchs} />
+					<SearchList list={searchs} />
 				</div>
 			</section>
 		</div>

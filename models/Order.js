@@ -8,29 +8,29 @@ const orderSchema = new Schema({
 		default: Date.now,
 	},
 	total: {
-	    type: String,
-	    required: true
+		type: String,
+		required: true,
 	},
-	toStreet: {
-	    type: String,
-	    required: true
+	address: {
+		type: String,
+		required: true,
 	},
 	toCity: {
-	    type: String,
-	    required: true
+		type: String,
+		required: true,
 	},
 	fromEmail: {
-	    type: String,
-	    required: true
+		type: String,
+		required: true,
 	},
-	paymentType: {
-	    type: String,
-	    required: true
+	paymentMethod: {
+		type: String,
+		required: true,
 	},
 	cart: {
-	    type: String,
-	    required: true
-	}
+		type: String,
+		required: true,
+	},
 });
 
 const Order = mongoose.model("order", orderSchema);

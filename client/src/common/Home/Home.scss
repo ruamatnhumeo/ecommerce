@@ -2,10 +2,13 @@
 	height: 100%;
 	display: flex;
 
+	a {
+		text-transform: uppercase;
+	}
+
 	&__layout {
 		height: 100%;
 		width: 33.33%;
-		
 	}
 
 	&__col {

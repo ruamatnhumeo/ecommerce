@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 import BreadcrumbAndFilter from "../../common/BreadcrumbAndFilter";
 import NotFound from "../../common/NotFound";
@@ -9,7 +9,8 @@ function Product(props) {
 	const match = useRouteMatch();
 
 	return (
-		<BreadcrumbAndFilter>
+		<Fragment>
+			<BreadcrumbAndFilter />
 			<Switch>
 				<Route
 					exact
@@ -17,13 +18,12 @@ function Product(props) {
 					component={CategoryPage}
 				/>
 				<Route
-					exact
-					path={`${match.url}/:id/detail`}
+					path={`${match.url}/detail/:id`}
 					component={ProductPage}
 				/>
 				<Route component={NotFound} />
 			</Switch>
-		</BreadcrumbAndFilter>
+		</Fragment>
 	);
 }
 

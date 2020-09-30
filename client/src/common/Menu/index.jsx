@@ -1,27 +1,28 @@
 import React from "react";
 import "./Menu.scss";
-import TooglebButton from "./TooglebButton";
-import DropdownMenu from "./DropdownMenu";
-
+import ToggleButton from "./ToggleButton";
+import AsideMenu from "./AsideMenu";
 
 function Menu(props) {
-  const { menu, onMenuClick } = props;
-  const menuViewportClass = !menu ? "menu__viewport" : "menu__viewport menu__viewport--open";
+	const { menu, onMenuClick } = props;
+	const menuViewportClass = !menu
+		? "menu__viewport"
+		: "menu__viewport menu__viewport--open";
 
-  const handleOnClick = () => {
-    if(!onMenuClick) return;
+	const handleOnClick = () => {
+		if (!onMenuClick) return;
 
-    onMenuClick();
-  }
+		onMenuClick();
+	};
 
-  return (
-    <div className="menu">
-      <TooglebButton onClick={handleOnClick} />
-      <section className={menuViewportClass}>
-        <DropdownMenu />
-      </section>
-    </div>
-  );
+	return (
+		<div className="menu">
+			<ToggleButton onClick={handleOnClick} />
+			<section className={menuViewportClass}>
+				<AsideMenu />
+			</section>
+		</div>
+	);
 }
 
 export default Menu;

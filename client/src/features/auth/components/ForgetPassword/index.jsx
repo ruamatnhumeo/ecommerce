@@ -13,14 +13,15 @@ function ForgetPassword(props) {
 		onClose();
 	};
 
-	const handleSubmit = () => {
-		console.log(inputRef.current);
-		authApi.forgetPassword(inputRef.current.value);
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		const email = inputRef.current.value;
+		authApi.forgetPassword(email);
 	};
 
 	const customStyles = {
 		overlay: {
-			zIndex: "1000"
+			zIndex: "1000",
 		},
 		content: {
 			padding: "0",
@@ -39,7 +40,11 @@ function ForgetPassword(props) {
 	};
 
 	return (
-		<Modal isOpen={isOpen} onRequestClose={handleClose} style={customStyles}>
+		<Modal
+			isOpen={isOpen}
+			onRequestClose={handleClose}
+			style={customStyles}
+		>
 			<div className="forget-password">
 				<div className="forget-password__inner">
 					<div className="forget-password__header">
@@ -52,7 +57,7 @@ function ForgetPassword(props) {
 					</div>
 
 					<div className="forget-password__form">
-						<form action="submit" onSubmit={handleSubmit}>
+						<form onSubmit={handleSubmit}>
 							<div className="forget-password__note">
 								<p>
 									Enter the email address you signed up with

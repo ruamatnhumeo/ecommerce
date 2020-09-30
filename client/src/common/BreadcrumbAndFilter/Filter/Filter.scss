@@ -1,98 +1,107 @@
 .filter {
-  font-size: 14px;
-  font-weight: 400;
-  text-transform: uppercase;
+	font-size: 14px;
+	font-weight: 400;
+	text-transform: uppercase;
 
-  // input[type=checkbox],
-  // input[type=radio] {
-  //   display: none;
-  // }
+	input[type="checkbox"],
+	input[type="radio"] {
+		display: none;
+	}
 
-  &__button {
-    margin-right: 10px;
-    cursor: pointer;
+	&__button {
+		margin-right: 10px;
+		cursor: pointer;
 
-    &:focus,
-    &:hover {
-      text-decoration: underline;
-    }
-  }
+		&:focus,
+		&:hover {
+			text-decoration: underline;
+		}
+	}
 
-  &__panel {
-    position: fixed;
-    top: 89px;
-    left: 0;
+	&__panel {
+		position: absolute;
+		top: 45px;
+		left: 0;
 
-    max-height: 0px;
-    width: 100%;
-    overflow: hidden;
-    border-bottom: 1px solid #000000;
-    transition: max-height 0.5s ease;
+		max-height: 0px;
+		width: 100%;
+		overflow: hidden;
+		border-bottom: 1px solid #000000;
+		transition: max-height 0.5s ease;
 
-    &--open {
-      max-height: 500px;
-      //135px when mobile
-    }
+		&--open {
+			max-height: 500px;
+			//135px when mobile
+		}
 
-    &__content {
-      display: flex;
-    }
+		&__content {
+			display: flex;
+			background: white;
+		}
 
-    &__part {
-      // padding: 12px 0 0 12px;
-      width: 25%;
-      border-right: 1px solid #000000;
-    }
+		&__part {
+			// padding: 12px 0 0 12px;
+			width: 25%;
+			border-right: 1px solid #000000;
+		}
 
-    &-item {
-      padding: 12px;
-    }
+		&-item {
+			padding: 12px;
+		}
 
-    &__list {
-      margin: 0;
-      padding: 0 12px;
-      font-size: 12px;
-      text-transform: none;
+		&__list {
+			margin: 0;
+			padding: 0 12px;
+			font-size: 12px;
+			text-transform: none;
 
-      list-style: none;
+			list-style: none;
 
-      & label {
-        cursor: pointer;
-      }
-    }
+			& label {
+				cursor: pointer;
+			}
+		}
 
-    &__sort-by-color {
-      display: flex;
-      flex-flow: wrap;
+		&__sort-by-color {
+			display: flex;
+			flex-flow: wrap;
 
-      & label {
-        margin: 4px;
-        width: 25px;
-        height: 25px;
-        background-color: #fcfcfc;
-        border: 1px solid #000000;
-      }
+			& label {
+				margin: 4px;
+				width: 25px;
+				height: 25px;
+				background-color: #fcfcfc;
+				border: 1px dashed #000000;
+			}
 
+			& input[type="checkbox"] {
+				&:hover ~ label,
+				&:checked ~ label {
+					border-radius: 50%;
+					border: 1px solid;
+				}
+			}
+		}
 
-      & input[type="checkbox"] {
+		&__sort-by-requires {
+			input[type="radio"] {
+				&:hover ~ label,
+				&:checked ~ label {
+					text-decoration: underline;
+				}
+			}
+		}
 
-        &:hover,
-        &:checked {
-          
-        }
-      }
-    }
-
-    &__sort-by-reqires {
-
-       & input[type="radio"] {
-
-        &:hover,
-        &:checked {
-          
-        }
-      }
-    }
-
-  }
+		&__sort-by-size {
+			label {
+				font-size: 14px;
+			}
+			input[type="checkbox"] {
+				&:hover ~ label,
+				&:checked ~ label {
+					font-weight: bold;
+				}
+			}
+		}
+	}
 }

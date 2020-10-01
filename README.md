@@ -9,11 +9,14 @@
 ### Features
 
 -   Auth: Login, Register, Reset password when forget
--   Cart
--   Product
+-   Cart: Add, Delete, Checkout
+-   Product: Show Category, Product detail,...
 -   Search
 
 ### Installation
+
+-   Need to create your own DB (MongoDB) and config them.
+-   Make sure you set an env var for mongo_URI, sendgrid_key and the jwtSecret on deployment
 
 ```bash
 #Clone project
@@ -40,16 +43,17 @@ npm run client
 # Server runs on http://localhost:5000 and client on http://localhost:3000
 ```
 
-### Todos
+### Todos (next phase)
 
--   Convert to TypeScript
+-   Adding responsive
+-   Remove boostrap
 -   Finish filter
 -   Make code cleaner
 -   Complete & Optimize UI
 
-### Lessons
+### Lessons (for me)
 
 -   Plan code base & use UML diagram
 -   Setup dependencies carefully before coding
 -   Do not use UI library if it's unnecessary
--   Plan code for component with more details and flow
+-   Plan code for component with more details and flows

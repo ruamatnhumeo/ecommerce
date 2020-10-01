@@ -8,7 +8,7 @@ const adminMiddleware = require("../middleware/admin.middleware");
 // @route GET /
 // @desc get all Orders for admin
 // @access private for admin
-router.get("/", async (req, res) => {
+router.get("/", authMiddleware, adminMiddleware, async (req, res) => {
 	try {
 		const Orders = await Order.find();
 		if (!Orders) {

@@ -2,21 +2,21 @@ import React from "react";
 import "./UserList.scss";
 
 function UserList(props) {
-	const { users, onDeleteUser} = props;
+	const { users, onDeleteUser } = props;
 
 	const handleDelete = (userId) => {
-		if(!onDeleteUser) return;
+		if (!onDeleteUser) return;
 
 		onDeleteUser(userId);
-	}
+	};
 
 	return (
-		<div className="order-list">
-			<div className="order-list__inner">
-				<div className="order-list__title">
+		<div className="user-list">
+			<div className="user-list__inner">
+				<div className="user-list__title">
 					<h6>User List</h6>
 				</div>
-				<div className="order-list__table">
+				<div className="user-list__table">
 					<table>
 						<thead>
 							<tr>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Orders.scss";
+import "./Users.scss";
 import UserList from "../../components/UserList";
 import userApi from "../../../../flux/api/userApi";
 
@@ -10,8 +10,7 @@ function Users() {
 		async function fetchUsers() {
 			try {
 				const response = await userApi.getUsers();
-				const responseJSON = await response.json();
-				setUsers(responseJSON);
+				setUsers(response);
 			} catch (error) {
 				console.log(error.message);
 			}
@@ -23,10 +22,10 @@ function Users() {
 	const handleDeleteUser = (userId) => {
 		userApi.deleteUser(userId);
 	};
-	
+
 	return (
 		<div className="users">
-			<UserList users={users} onDelete={handleDeleteUser}/>
+			<UserList users={users} onDelete={handleDeleteUser} />
 		</div>
 	);
 }

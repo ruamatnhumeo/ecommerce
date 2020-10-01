@@ -45,7 +45,7 @@ npm run client
 
 ### Todos (next phase)
 
--   Adding responsive
+-   Adding responsive, reset CSS
 -   Remove boostrap
 -   Finish filter
 -   Make code cleaner

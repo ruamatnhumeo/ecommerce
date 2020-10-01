@@ -1,0 +1,16 @@
+.user-list {
+	height: 100%;
+
+	&__inner {
+		height: 100%;
+	}
+	&__title {
+		padding: 12px 0;
+		text-align: center;
+	}
+	&__table {
+		> table {
+			width: 100%;
+		}
+	}
+}

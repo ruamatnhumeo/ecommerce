@@ -219,7 +219,7 @@ router.post("/forget-password", async (req, res) => {
 
 		transporter.sendMail({
 			to: req.body.email,
-			from: "ecommerce@nodejs.com",
+			from: "vandat1999123@gmail.com",
 			subject: "Reset your password",
 			html: `
       <p>You requested a password reset!</p>
@@ -229,7 +229,6 @@ router.post("/forget-password", async (req, res) => {
 
 		res.status(200).json("success");
 	} catch (error) {
-		console.log("err");
 		res.status(400).json({ msg: error.message });
 	}
 });

@@ -9,8 +9,7 @@ function Orders() {
 		async function fetchOrders() {
 			try {
 				const response = await orderApi.getOrders();
-				const responseJSON = await response.json();
-				setOders(responseJSON);
+				setOders(response);
 			} catch (error) {
 				console.log(error.message);
 			}
@@ -21,7 +20,7 @@ function Orders() {
 
 	return (
 		<div className="orders">
-			<OrderList orders={orders}/>
+			<OrderList orders={orders} />
 		</div>
 	);
 }

@@ -30,14 +30,14 @@ function OrderList(props) {
 									<td> {order.totalPrice}</td>
 									<td>{order.fromId}</td>
 									<td>{order.toCity}</td>
-									<td>
+									{/* <td>
 										{order.cart.map((product) => (
 											<div>
 												{product.name} {" x "}{" "}
 												{product.quantity}
 											</div>
 										))}
-									</td>
+									</td> */}
 								</tr>
 							))}
 						</tbody>

@@ -13,15 +13,14 @@
   "author": "ruamatnhumeo",
   "license": "MIT",
   "dependencies": {
+    "@sendgrid/mail": "^7.2.6",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "concurrently": "^5.2.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.25",
-    "nodemailer": "^6.4.11",
-    "nodemailer-sendgrid-transport": "^0.2.0"
+    "mongoose": "^5.9.25"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",

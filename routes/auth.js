@@ -11,16 +11,8 @@ const JWT_SECRET = config.JWT_SECRET;
 
 const crypto = require("crypto");
 
-const nodemailer = require("nodemailer");
-const sendgridTransport = require("nodemailer-sendgrid-transport");
-const SENDGRID_API_KEY = config.SENDGRID_API_KEY;
-const transporter = nodemailer.createTransport(
-	sendgridTransport({
-		auth: {
-			api_key: SENDGRID_API_KEY,
-		},
-	})
-);
+const sendgridMail = require("@sendgrid/mail");
+sendgridMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const authMiddleware = require("../middleware/auth.middleware");
 
@@ -216,18 +208,21 @@ router.post("/forget-password", async (req, res) => {
 			throw new Error("No user found!");
 		}
 		const passwordResetObj = generate(user);
+		console.log(passwordResetObj);
 
-		transporter.sendMail({
+		const msg = {
 			to: req.body.email,
 			from: "vandat1999123@gmail.com",
 			subject: "Reset your password",
 			html: `
-      <p>You requested a password reset!</p>
-      <p>Click this <a href="http://localhost:3000/auth/reset-password/${passwordResetObj.token}">link</a> to reset a new password!</p>
-      `,
-		});
+		  <p>You requested a password reset!</p>
+		  <p>Click this <a href="http://localhost:3000/auth/reset-password/${passwordResetObj.token}">link</a> to reset a new password!</p>
+		  `,
+		};
 
-		res.status(200).json("success");
+		await sendgridMail.send(msg);
+
+		res.status(200).json("Sent");
 	} catch (error) {
 		res.status(400).json({ msg: error.message });
 	}
@@ -239,13 +234,15 @@ router.post("/forget-password", async (req, res) => {
 // @access private
 router.post("/reset-password/:token", async (req, res) => {
 	try {
+		const password = req.body.password;
 		const token = req.params.token;
+
 		const resetTokenObj = await ResetToken.findOneAndRemove({
 			token,
 			expires: { $gt: Date.now() },
 		});
 		if (!resetTokenObj) {
-			throw Error("Token is not valid!");
+			throw new Error("Token is not valid!");
 		}
 
 		const user = await User.findOne({ email: resetTokenObj.email }).exec();
@@ -253,7 +250,7 @@ router.post("/reset-password/:token", async (req, res) => {
 		const salt = await bcrypt.genSalt(10);
 
 		if (!salt) {
-			throw Error("Something went wrong with bcrypt!");
+			throw new Error("Something went wrong with bcrypt!");
 		}
 
 		const hashedPassword = await bcrypt.hash(password, salt);

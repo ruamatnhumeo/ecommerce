@@ -22,9 +22,9 @@ const authApi = {
 		const url = "/auth/forget-password";
 		return axiosClient.post(url, body);
 	},
-	resetPassword: (password) => {
+	resetPassword: (password, token) => {
 		const body = JSON.stringify({ password });
-		const url = "/auth/reset-password";
+		const url = `/auth/reset-password/${token}`;
 		return axiosClient.post(url, body);
 	},
 };

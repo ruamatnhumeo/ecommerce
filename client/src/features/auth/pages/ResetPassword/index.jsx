@@ -1,13 +1,16 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
+import { useParams } from "react-router-dom";
 import authApi from "../../../../flux/api/authApi";
 import "./ResetPassword.scss";
 
 function ResetPassword() {
 	const inputRef = useRef(null);
+	const { token } = useParams();
 
-	const handleSubmit = () => {
-		console.log(inputRef.current);
-		authApi.resetPassword(inputRef.current.value);
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		console.log(inputRef.current.value);
+		authApi.resetPassword(inputRef.current.value, token);
 	};
 
 	return (
@@ -19,12 +22,17 @@ function ResetPassword() {
 
 				<div className="reset-password__form">
 					<form action="submit" onSubmit={handleSubmit}>
-						<div style={{  textAlign: "center" }}>
-							<label htmlFor="reset-password" >New password</label>
-							<input type="password" id="reset-password" required/>
+						<div style={{ textAlign: "center" }}>
+							<label htmlFor="reset-password">New password</label>
+							<input
+								type="password"
+								id="reset-password"
+								required
+								ref={inputRef}
+							/>
 						</div>
 
-						<div style={{textAlign: "center" }}>
+						<div style={{ textAlign: "center" }}>
 							<button type="submit">Reset password</button>
 						</div>
 					</form>

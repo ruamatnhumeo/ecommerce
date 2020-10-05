@@ -17,6 +17,7 @@ function ForgetPassword(props) {
 		event.preventDefault();
 		const email = inputRef.current.value;
 		authApi.forgetPassword(email);
+		onClose();
 	};
 
 	const customStyles = {
@@ -44,6 +45,7 @@ function ForgetPassword(props) {
 			isOpen={isOpen}
 			onRequestClose={handleClose}
 			style={customStyles}
+			ariaHideApp={false}
 		>
 			<div className="forget-password">
 				<div className="forget-password__inner">

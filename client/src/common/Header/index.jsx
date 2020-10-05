@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import queryString from "query-string";
 
 import "./Header.scss";
 import Menu from "../Menu";
@@ -113,7 +112,6 @@ function Header() {
 	};
 
 	const handleLogout = () => {
-		console.log("logout");
 		dispatch(logout());
 	};
 
@@ -178,12 +176,10 @@ function Header() {
 	useEffect(() => {
 		async function fetchSearchs() {
 			try {
-				const paramsString = queryString.stringify(searchFilter);
 				const response = await productApi.getSearchProducts(
-					paramsString
+					searchFilter
 				);
-				const responseJSON = await response.json();
-				setSearchs(responseJSON);
+				setSearchs(response);
 			} catch (error) {
 				console.log(error.message);
 			}

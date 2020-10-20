@@ -4,10 +4,10 @@ import ToggleButton from "./ToggleButton";
 import AsideMenu from "./AsideMenu";
 
 function Menu(props) {
-	const { menu, onMenuClick } = props;
-	const menuViewportClass = !menu
-		? "menu__viewport"
-		: "menu__viewport menu__viewport--open";
+	const { isMenuOpen, onMenuClick } = props;
+	const menuContentClassName = !isMenuOpen
+		? "menu__content"
+		: "menu__content menu__content--open";
 
 	const handleOnClick = () => {
 		if (!onMenuClick) return;
@@ -18,7 +18,7 @@ function Menu(props) {
 	return (
 		<div className="menu">
 			<ToggleButton onClick={handleOnClick} />
-			<section className={menuViewportClass}>
+			<section className={menuContentClassName}>
 				<AsideMenu />
 			</section>
 		</div>

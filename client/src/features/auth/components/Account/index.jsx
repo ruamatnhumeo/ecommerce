@@ -5,15 +5,15 @@ import "./Account.scss";
 
 function Account(props) {
 	const {
-		accountOpen,
+		isAccountOpen,
 		onAccountClick,
 		onLogout,
 		isAdmin = false,
 		userId,
 	} = props;
-	const viewportClassName = !accountOpen
-		? "account__viewport"
-		: "account__viewport account__viewport--open";
+	const viewportClassName = !isAccountOpen
+		? "account__content"
+		: "account__content account__content--open";
 
 	const handleOpenClick = () => {
 		if (!onAccountClick) return;
@@ -31,7 +31,7 @@ function Account(props) {
 				<div>Account</div>
 			</div>
 			<section className={viewportClassName}>
-				<div className="account__content">
+				<div className="account__inner">
 					<ul>
 						<li>
 							<Link to={`/auth/profile/:${userId}`}>Profile</Link>

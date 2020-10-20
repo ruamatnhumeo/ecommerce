@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import "./Login.scss";
-import { FastField, Form, Formik } from "formik";
-import InputField from "../../../../custom-fields/InputField";
-import * as Yup from "yup";
 import { useHistory } from "react-router-dom";
+import { FastField, Form, Formik } from "formik";
+import * as Yup from "yup";
+import "./Login.scss";
 
+import InputField from "../../../../custom-fields/InputField";
 import ForgetPassword from "../ForgetPassword";
 
 const initialValues = {
@@ -25,8 +25,8 @@ const validationSchema = Yup.object().shape({
 function Login(props) {
 	const [isForgetDropdowmOpen, setIsForgetDropdownOpen] = useState(false);
 	const history = useHistory();
-	const { loginOpen, message, onLoginClick, onLoginSubmit } = props;
-	const dropdownClass = !loginOpen
+	const { isLoginOpen, message, onLoginClick, onLoginSubmit } = props;
+	const dropdownClassName = !isLoginOpen
 		? "login__dropdown"
 		: "login__dropdown login__dropdown--open";
 
@@ -57,7 +57,7 @@ function Login(props) {
 				LOGIN
 			</div>
 
-			<section className={dropdownClass}>
+			<section className={dropdownClassName}>
 				<div className="login__dropdown__inner">
 					<Formik
 						initialValues={initialValues}
@@ -133,5 +133,3 @@ function Login(props) {
 }
 
 export default Login;
-
-//how to close and open `

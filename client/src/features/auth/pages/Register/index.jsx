@@ -28,7 +28,7 @@ const validationSchema = Yup.object().shape({
 		.max(20, "Too long, try a shorter password"),
 });
 
-function LoginModal() {
+function Register() {
 	const [modal, setModal] = useState(false);
 	const [message, setMeesage] = useState(null);
 	const [isForgetDropdownOpen, setIsForgetDropdownOpen] = useState(false);
@@ -96,14 +96,12 @@ function LoginModal() {
 									name="name"
 									component={InputField}
 									label="Name"
-									placeholder="name..."
 								/>
 
 								<FastField
 									name="email"
 									component={InputField}
 									label="Email"
-									placeholder="email@..."
 								/>
 
 								<FastField
@@ -111,11 +109,14 @@ function LoginModal() {
 									type="password"
 									component={InputField}
 									label="Password"
-									placeholder="password..."
 								/>
 
-								<FormGroup>
-									<Button type="submit" color="success">
+								<FormGroup style={{ textAlign: "center" }}>
+									<Button
+										type="submit"
+										color="success"
+										className="register__btn"
+									>
 										{isSubmitting && (
 											<Spinner size="sm" color="dark" />
 										)}
@@ -140,4 +141,4 @@ function LoginModal() {
 	);
 }
 
-export default LoginModal;
+export default Register;

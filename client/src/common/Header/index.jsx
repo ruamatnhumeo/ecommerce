@@ -20,7 +20,6 @@ import productApi from "../../flux/api/productApi";
 
 function Header() {
 	const dispatch = useDispatch();
-
 	const error = useSelector((state) => state.error);
 	const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 	const user = useSelector((state) => state.auth.user);
@@ -47,7 +46,7 @@ function Header() {
 	const [searchFilter, setSearchFilter] = useState(null);
 	const [searchs, setSearchs] = useState(null);
 
-	//handle open&close panel
+	//handle open & close panel
 	const handleBackDropClick = () => {
 		if (menuOpen) {
 			setMenuOpen(false);
@@ -202,7 +201,7 @@ function Header() {
 			<nav className="header__viewport">
 				<div className="header__part header__logo">
 					<div className="header__logo-content">
-						<a href="http://localhost:3000">TEAMRABBIT</a>
+						<a href="http://localhost:3000">BALENCIAGA</a>
 					</div>
 				</div>
 
@@ -210,7 +209,7 @@ function Header() {
 					<div className="header__search-content">
 						<Search
 							searchs={searchs}
-							searchPanelOpen={searchPanelOpen}
+							isSearchPanelOpen={searchPanelOpen}
 							onSearchClick={handleSearchClick}
 							onSearchChange={handleSearchChange}
 						/>
@@ -223,7 +222,7 @@ function Header() {
 							<li>
 								{isAuthenticated ? (
 									<Account
-										accountOpen={accountOpen}
+										isAccountOpen={accountOpen}
 										onAccountClick={handleAccountOpenClick}
 										onLogout={handleLogout}
 										isAdmin={isAdmin}
@@ -231,7 +230,7 @@ function Header() {
 									/>
 								) : (
 									<Login
-										loginOpen={loginOpen}
+										isLoginOpen={loginOpen}
 										message={meesage}
 										onLoginClick={handleLoginOpenClick}
 										onLoginSubmit={handleLoginSubmit}
@@ -240,7 +239,7 @@ function Header() {
 							</li>
 							<li>
 								<Cart
-									cartOpen={cartOpen}
+									isCartOpen={cartOpen}
 									cart={cart}
 									total={totalCart}
 									onCartClick={handleCartOpenClick}
@@ -251,7 +250,7 @@ function Header() {
 							</li>
 							<li>
 								<Menu
-									menu={menuOpen}
+									isMenuOpen={menuOpen}
 									onMenuClick={handleMenuClick}
 								/>
 							</li>
@@ -259,7 +258,7 @@ function Header() {
 					</div>
 				</div>
 				<Backdrop
-					open={
+					isOpen={
 						menuOpen ||
 						cartOpen ||
 						loginOpen ||

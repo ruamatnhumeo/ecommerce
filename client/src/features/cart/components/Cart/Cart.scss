@@ -29,7 +29,7 @@
 		}
 	}
 
-	&__viewport {
+	&__content {
 		position: absolute;
 		top: 45px;
 		left: 0px;
@@ -45,7 +45,7 @@
 		}
 	}
 
-	&__content {
+	&__inner {
 		height: 100%;
 		display: flex;
 		flex-direction: column;

@@ -4,9 +4,9 @@ import SearchList from "./components/SearchList";
 import SearchForm from "./components/SearchForm";
 
 function Search(props) {
-	const { searchs, searchPanelOpen, onSearchClick, onSearchChange } = props;
+	const { searchs, isSearchPanelOpen, onSearchClick, onSearchChange } = props;
 	const inputElement = useRef(null);
-	const searchPanelClassName = !searchPanelOpen
+	const searchPanelClassName = !isSearchPanelOpen
 		? "search__panel"
 		: "search__panel search__panel--open";
 
@@ -15,7 +15,7 @@ function Search(props) {
 			inputElement.current.focus();
 		}
 
-		if (searchPanelOpen) return;
+		if (isSearchPanelOpen) return;
 
 		onSearchClick();
 	};
@@ -37,7 +37,7 @@ function Search(props) {
 					onSubmit={onSearchChange}
 					refElement={inputElement}
 				/>
-				{searchPanelOpen && (
+				{isSearchPanelOpen && (
 					<div
 						className="search__close-toggle"
 						onClick={handleCloseToggleClick}

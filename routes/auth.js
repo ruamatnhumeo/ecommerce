@@ -1,20 +1,18 @@
 const express = require("express");
+
 const router = express.Router();
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const sendgridMail = require("@sendgrid/mail");
 const config = require("../config");
 
 const User = require("../models/User");
-const ResetToken = require("../models/ResetToken");
-
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const JWT_SECRET = config.JWT_SECRET;
-
-const crypto = require("crypto");
-
-const sendgridMail = require("@sendgrid/mail");
-sendgridMail.setApiKey(process.env.SENDGRID_API_KEY);
-
 const authMiddleware = require("../middleware/auth.middleware");
+const ResetToken = require("../models/ResetToken");
+const generate = require("./helpers");
+
+const JWT_SECRET = config.JWT_SECRET;
+sendgridMail.setApiKey(config.SENDGRID_API_KEY);
 
 // @route POST /login
 // @desc login user
@@ -40,7 +38,7 @@ router.post("/login", async (req, res) => {
 			throw Error("Invalid password or email!");
 		}
 
-		//create/sign token
+		// create/sign token
 		const token = jwt.sign(
 			{ id: user._id, isAdmin: user.isAdmin },
 			JWT_SECRET,
@@ -111,7 +109,7 @@ router.post("/register", async (req, res) => {
 			throw Error("Something went wrong saving new user");
 		}
 
-		//create/sign token
+		// create/sign token
 		const token = jwt.sign(
 			{ id: savedUser._id, isAdmin: savedUser.isAdmin },
 			JWT_SECRET,
@@ -138,7 +136,7 @@ router.post("/register", async (req, res) => {
 // @access private
 router.get("/:id", authMiddleware, async (req, res) => {
 	try {
-		//get user data without password
+		// get user data without password
 		const user = await User.findById(req.params.id).select("-password");
 		if (!user) {
 			throw Error("No user found!");
@@ -196,7 +194,7 @@ router.patch("/:id", authMiddleware, async (req, res) => {
 	}
 });
 
-//forget password
+// forget password
 // @route POST /forget-password
 // @desc forget password
 // @access public
@@ -228,7 +226,7 @@ router.post("/forget-password", async (req, res) => {
 	}
 });
 
-//reset password
+// reset password
 // @route POST /reset-password
 // @desc reset password
 // @access private
@@ -267,21 +265,5 @@ router.post("/reset-password/:token", async (req, res) => {
 		res.status(400).json({ msg: error.message });
 	}
 });
-
-const generate = (user) => {
-	const email = user.email;
-	const token = crypto.randomBytes(40).toString("hex");
-	const ONE_HOUR_IN_MILLISECOND = 3600000;
-	const expires = Date.now() + ONE_HOUR_IN_MILLISECOND;
-
-	const tokenObject = new ResetToken({
-		email,
-		token,
-		expires,
-	});
-	tokenObject.save();
-
-	return tokenObject;
-};
 
 module.exports = router;

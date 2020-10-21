@@ -1,11 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
-
+const cors = require("cors");
 const bodyParser = require("body-parser");
 const config = require("./config");
-const cors = require("cors");
 
-//import routes
+// import routes
 const productRoutes = require("./routes/product");
 const orderRoutes = require("./routes/order");
 const userRoutes = require("./routes/user");
@@ -17,20 +16,20 @@ const app = express();
 
 // CORS Middleware
 app.use(cors());
-//Bodyparser middleware
+// Bodyparser middleware
 app.use(bodyParser.json());
 
-//apply routes
+// apply routes
 app.use("/product", productRoutes);
 app.use("/order", orderRoutes);
 app.use("/user", userRoutes);
 app.use("/auth", authRoutes);
 
-//DB config
+// DB config
 // const db = `${config.MONGO_URI}/${config.MONGO_DB_NAME}`;
 const db = `${config.MONGO_URI}`;
 
-//connect moongose
+// connect moongose
 mongoose
 	.connect(db, {
 		useNewUrlParser: true,
@@ -42,5 +41,3 @@ mongoose
 	.catch((err) => console.log(err));
 
 app.listen(PORT, () => console.log(`Server started on PORT ${PORT}`));
-
-//mongodb+srv://vandat1999123:vandat1999@ecommerce.as1ox.mongodb.net/ecommerce?retryWrites=true&w=majority

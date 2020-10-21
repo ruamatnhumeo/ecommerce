@@ -5,7 +5,7 @@ import RegisterPage from "./pages/Register";
 import ProfilePage from "./pages/Profile";
 import ResetPasswordPage from "./pages/ResetPassword";
 
-function Product(props) {
+function Product() {
 	const match = useRouteMatch();
 
 	return (

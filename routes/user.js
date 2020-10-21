@@ -1,13 +1,14 @@
 const express = require("express");
+
 const router = express.Router();
 const User = require("../models/User");
 
 const authMiddleware = require("../middleware/auth.middleware");
 const adminMiddleware = require("../middleware/admin.middleware");
 
-//@route   GET /
-//@desc    Get all users
-//@access  Private for admin
+// @route   GET /
+// @desc    Get all users
+// @access  Private for admin
 router.get("/", authMiddleware, adminMiddleware, async (req, res) => {
 	try {
 		const users = await User.find();

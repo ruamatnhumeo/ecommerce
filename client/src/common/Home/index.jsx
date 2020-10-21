@@ -6,7 +6,7 @@ function Home() {
 	return (
 		<div className="home">
 			<div className="home__layout">
-				<div className="home__col" style={{border: "none"}}>
+				<div className="home__col" style={{ border: "none" }}>
 					<Link to="/product/women">Women</Link>
 				</div>
 			</div>

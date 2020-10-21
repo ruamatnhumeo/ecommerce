@@ -1,0 +1,27 @@
+{
+    "extends": [
+		"airbnb",
+		"prettier",
+		"plugin:node/recommended",
+		"plugin:react/recommended",
+		"plugin:react-hooks/recommended"
+    ],
+    
+    "plugins": [
+		"prettier",
+		"react-hooks"
+	],
+	
+    "rules": {
+		"react-hooks/rules-of-hooks": "error",
+		"react-hooks/exhaustive-deps": "warn",
+		"no-unused-vars":"warn",
+		"prettier/prettier": "warn",
+		"spaced-comment": "warn",
+		"func-names": "off",
+		"no-console": "off",
+		"consistent-return": "off" ,
+		"prefer-destructuring": "off",
+		"no-underscore-dangle": "off"
+	}
+}

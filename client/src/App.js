@@ -21,7 +21,6 @@ function App() {
 				<Suspense fallback={<div>Loading...</div>}>
 					<BrowserRouter>
 						<Header />
-
 						<Switch>
 							<Route exact path="/" component={Home} />
 							<Route path="/product" component={Product} />
@@ -30,8 +29,6 @@ function App() {
 							<Route path="/user" component={User} />
 							<Route component={NotFound} />
 						</Switch>
-
-						{/* <Footer /> */}
 					</BrowserRouter>
 				</Suspense>
 			</div>

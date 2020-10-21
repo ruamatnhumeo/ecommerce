@@ -17,7 +17,7 @@ i {
 	/* use !important to prevent issues with browser extensions that change fonts */
 	font-family: "ecommerce-font" !important;
 	font-size: 22px;
-	speak: never;
+	/* speak: never; */
 	font-style: normal;
 	font-weight: normal;
 	font-variant: normal;

@@ -1,27 +1,25 @@
 {
     "extends": [
-		"airbnb",
-		"prettier",
-		"plugin:node/recommended",
-		"plugin:react/recommended",
-		"plugin:react-hooks/recommended"
+        "plugin:react/recommended",
+        "airbnb",
+        "prettier",
+        "prettier/react"
     ],
-    
     "plugins": [
-		"prettier",
-		"react-hooks"
-	],
-	
+        "react",
+        "prettier"
+    ],
     "rules": {
-		"react-hooks/rules-of-hooks": "error",
-		"react-hooks/exhaustive-deps": "warn",
+        "prettier/prettier": "error",
+        // "quotes": "off",
+        // "no-tabs": "off",
+        // "indent": "off",
 		"no-unused-vars":"warn",
-		"prettier/prettier": "warn",
 		"spaced-comment": "warn",
 		"func-names": "off",
 		"no-console": "off",
 		"consistent-return": "off" ,
 		"prefer-destructuring": "off",
 		"no-underscore-dangle": "off"
-	}
+    }
 }

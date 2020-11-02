@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
-import './Header.scss';
-import Menu from '../Menu';
-import Search from '../../features/search';
-import Login from '../../features/auth/components/Login';
-import Cart from '../../features/cart/components/Cart';
-import Backdrop from '../Backdrop';
-import Account from '../../features/auth/components/Account';
+import "./Header.scss";
+import Menu from "../Menu";
+import Search from "../../features/search";
+import Login from "../../features/auth/components/Login";
+import Cart from "../../features/cart/components/Cart";
+import Backdrop from "../Backdrop";
+import Account from "../../features/auth/components/Account";
 
 import {
 	cartRemove,
 	cartCheckOut,
 	cartClear,
-} from '../../flux/actions/cartAction';
-import { clearErrors } from '../../flux/actions/errorAction';
-import { login, logout } from '../../flux/actions/authAction';
-import productApi from '../../flux/api/productApi';
+} from "../../flux/actions/cartAction";
+import { clearErrors } from "../../flux/actions/errorAction";
+import { login, logout } from "../../flux/actions/authAction";
+import productApi from "../../flux/api/productApi";
 
 function Header() {
 	const dispatch = useDispatch();
@@ -32,10 +32,12 @@ function Header() {
 
 	const cart = useSelector((state) => state.cart.bag);
 
-	const totalCart = cart.reduce((total, next) => {
-		const totalEachProduct = next.quantity * next.price;
-		total += totalEachProduct;
-	}, 0);
+	const totalCart = cart
+		? cart.reduce((total, next) => {
+				const totalEachProduct = next.quantity * next.price;
+				total += totalEachProduct;
+		  }, 0)
+		: 0;
 
 	const [accountOpen, setAccountOpen] = useState(false);
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -116,7 +118,7 @@ function Header() {
 
 	useEffect(() => {
 		// Check for login error
-		if (error.id === 'LOGIN_FAIL') {
+		if (error.id === "LOGIN_FAIL") {
 			setMessage(error.msg.msg);
 		} else {
 			setMessage(null);

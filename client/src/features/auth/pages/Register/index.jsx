@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Button, FormGroup, Alert, Spinner } from "reactstrap";
 import { FastField, Form, Formik } from "formik";
-import InputField from "../../../../custom-fields/InputField";
+
 import * as Yup from "yup";
 import "./Register.scss";
 
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors } from "../../../../flux/actions/errorAction";
 import { register } from "../../../../flux/actions/authAction";
+import InputField from "../../../../custom-fields/InputField";
 import ForgetPassword from "../../components/ForgetPassword";
 
 const initialValues = {

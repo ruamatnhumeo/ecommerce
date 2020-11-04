@@ -36,6 +36,7 @@ function Header() {
 		? cart.reduce((total, next) => {
 				const totalEachProduct = next.quantity * next.price;
 				total += totalEachProduct;
+				return total;
 		  }, 0)
 		: 0;
 
@@ -48,7 +49,7 @@ function Header() {
 	const [searchFilter, setSearchFilter] = useState(null);
 	const [searchs, setSearchs] = useState(null);
 
-	//handle open & close panel
+	// handle open & close panel
 	const handleBackDropClick = () => {
 		if (menuOpen) {
 			setMenuOpen(false);
@@ -105,11 +106,11 @@ function Header() {
 
 	const handleLoginSubmit = (values) => {
 		// POST on server
-		const user = {
+		const userLoginData = {
 			...values,
 		};
 
-		dispatch(login(user));
+		dispatch(login(userLoginData));
 	};
 
 	const handleLogout = () => {
@@ -146,7 +147,7 @@ function Header() {
 		setCartOpen(!cartOpen);
 	};
 
-	//cart actions
+	// cart actions
 	const handleRemoveCart = (productId) => {
 		dispatch(cartRemove(productId));
 	};
@@ -159,7 +160,7 @@ function Header() {
 		dispatch(cartCheckOut(cart, totalCart));
 	};
 
-	//Search
+	// Search
 	const handleSearchClick = () => {
 		if (loginOpen) {
 			setLoginOpen(false);
@@ -181,8 +182,8 @@ function Header() {
 					searchFilter
 				);
 				setSearchs(response);
-			} catch (error) {
-				console.log(error.message);
+			} catch (err) {
+				console.log(err.message);
 			}
 		}
 

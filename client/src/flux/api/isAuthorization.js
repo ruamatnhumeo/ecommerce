@@ -1,4 +1,4 @@
-export const isAuthorization = () => {
+const isAuthorization = () => {
 	// Get token from localstorage
 	if (typeof window === "undefined") return true;
 	const token = window.localStorage.getItem("token");
@@ -9,3 +9,5 @@ export const isAuthorization = () => {
 
 	return false;
 };
+
+export default isAuthorization;

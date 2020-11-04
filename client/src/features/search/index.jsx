@@ -28,7 +28,7 @@ function Search(props) {
 		<div className="search">
 			<div className="search__content">
 				<div className="search__toggle" onClick={handleToggleClick}>
-					<i className="e-search"></i>
+					<i className="e-search" />
 				</div>
 
 				<SearchForm
@@ -42,7 +42,7 @@ function Search(props) {
 						className="search__close-toggle"
 						onClick={handleCloseToggleClick}
 					>
-						<i className="e-x" style={{ width: "20px" }}></i>
+						<i className="e-x" style={{ width: "20px" }} />
 					</div>
 				)}
 			</div>

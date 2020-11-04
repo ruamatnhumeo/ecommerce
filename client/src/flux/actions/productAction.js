@@ -1,5 +1,4 @@
 import {
-	GET_PRODUCT,
 	GET_CATEGORY,
 	ADD_PRODUCT,
 	DELETE_PRODUCT,
@@ -8,6 +7,12 @@ import {
 } from "./types";
 import { returnErrors } from "./errorAction";
 import productApi from "../api/productApi";
+
+export const setProductLoading = () => {
+	return {
+		type: PRODUCT_LOADING,
+	};
+};
 
 export const addProduct = (newProduct) => async (dispatch) => {
 	try {
@@ -24,7 +29,7 @@ export const addProduct = (newProduct) => async (dispatch) => {
 
 export const deleteProduct = (productId) => async (dispatch) => {
 	try {
-		const response = await productApi.deleteProduct(productId);
+		// const response = await productApi.deleteProduct(productId);
 
 		dispatch({
 			type: DELETE_PRODUCT,
@@ -61,10 +66,4 @@ export const getCategory = (category) => async (dispatch) => {
 		console.log("error", error);
 		dispatch(returnErrors(error.data, error.status));
 	}
-};
-
-export const setProductLoading = () => {
-	return {
-		type: PRODUCT_LOADING,
-	};
 };

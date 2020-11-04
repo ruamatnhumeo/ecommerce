@@ -42,7 +42,7 @@ function Cart(props) {
 					<i
 						className="e-shopping-bag"
 						style={{ width: "16px", height: "22px" }}
-					></i>
+					/>
 					<div className="cart__button__count">
 						<span>{cart.length > 0 ? cart.length : null}</span>
 					</div>

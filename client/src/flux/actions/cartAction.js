@@ -1,5 +1,5 @@
 import { returnErrors } from "./errorAction";
-import orderApi from "../api/orderApi";
+// import orderApi from "../api/orderApi";
 
 import { CART_ADD, CART_REMOVE, CART_CLEAR } from "./types";
 
@@ -7,7 +7,7 @@ import { CART_ADD, CART_REMOVE, CART_CLEAR } from "./types";
 export const cartAdd = (product) => (dispatch, getState) => {
 	const newBag = [...getState().cart.bag];
 	const productId = product.id;
-	const foundIndex = newBag.findIndex((product) => product.id === productId);
+	const foundIndex = newBag.findIndex((item) => item.id === productId);
 
 	// Increase quantity if existing
 	if (foundIndex >= 0) {
@@ -53,7 +53,7 @@ export const cartRemove = (productId) => (dispatch, getState) => {
 // checkout
 export const cartCheckOut = (newOrder) => async (dispatch) => {
 	try {
-		const response = await orderApi.checkout(newOrder);
+		// const response = await orderApi.checkout(newOrder);
 
 		dispatch({
 			type: CART_CLEAR,

@@ -10,6 +10,8 @@
         "prettier"
     ],
     "rules": {
+        "react/forbid-prop-types": "off",
+        "react/prop-types": "warn",
         "prettier/prettier": "error",
         // "quotes": "off",
         // "no-tabs": "off",

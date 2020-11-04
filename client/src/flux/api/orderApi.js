@@ -1,7 +1,7 @@
 import axiosClient from "./axiosClient";
 
 const orderApi = {
-	//checkout -->create order in order routes
+	// checkout -->create order in order routes
 	getOrders: () => {
 		const url = "/order/";
 		return axiosClient.get(url);

@@ -1,7 +1,7 @@
 import React from "react";
 import "./CheckoutForm.scss";
 import { FastField, Form, Formik } from "formik";
-import InputField from "../../../../custom-fields/InputField"
+import InputField from "../../../../custom-fields/InputField";
 
 function CheckoutForm(props) {
 	const { onCheckoutSubmit } = props;

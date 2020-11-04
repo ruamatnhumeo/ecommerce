@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from 'prop-types';
+// import PropTypes from "prop-types";
 import "./Breadcrumb.scss";
 
 // Breadcrumb.propTypes = {
@@ -13,21 +13,21 @@ import "./Breadcrumb.scss";
 // };
 
 function Breadcrumb(props) {
-  const { breadcrumb, breadcrumbClick } = props;
+	// const { breadcrumb, breadcrumbClick } = props;
 
-//   const BreadcrumbClick = () => {
-//     if (!BreadcrumbClick) return;
+	//   const BreadcrumbClick = () => {
+	//     if (!BreadcrumbClick) return;
 
-//     BreadcrumbClick();
-//   };
+	//     BreadcrumbClick();
+	//   };
 
-  return (
-    <div className="breadcrumbi">
-      <div className="breadcrumb__inner">
-          <span>Breadcrumb</span>
-      </div>
-    </div>
-  );
+	return (
+		<div className="breadcrumbi">
+			<div className="breadcrumb__inner">
+				<span>Breadcrumb</span>
+			</div>
+		</div>
+	);
 }
 
 export default Breadcrumb;

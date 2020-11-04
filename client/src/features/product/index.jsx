@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 import BreadcrumbAndFilter from "../../common/BreadcrumbAndFilter";
 import NotFound from "../../common/NotFound";
@@ -9,7 +9,7 @@ function Product(props) {
 	const match = useRouteMatch();
 
 	return (
-		<Fragment>
+		<>
 			<BreadcrumbAndFilter />
 			<Switch>
 				<Route
@@ -23,7 +23,7 @@ function Product(props) {
 				/>
 				<Route component={NotFound} />
 			</Switch>
-		</Fragment>
+		</>
 	);
 }
 

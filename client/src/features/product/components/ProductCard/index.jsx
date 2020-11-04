@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import "./ProductCard.scss";
 
@@ -82,25 +82,25 @@ function ProductCard(props) {
 						<div className="product-card__options-list">
 							<ul>
 								<li onClick={handleAdd}>
-									<i className="e-plus"></i>
+									<i className="e-plus" />
 								</li>
 
 								{isAdmin && (
-									<Fragment>
+									<>
 										<li onClick={handleEditClick}>
-											<i className="e-minus"></i>
+											<i className="e-minus" />
 										</li>
 										<li onClick={handleRemoveClick}>
-											<i className="e-x"></i>
+											<i className="e-x" />
 										</li>
-									</Fragment>
+									</>
 								)}
 							</ul>
 						</div>
 					</div>
 				</div>
 			) : (
-				<div className="product-card__inner--fake"></div>
+				<div className="product-card__inner--fake" />
 			)}
 		</li>
 	);

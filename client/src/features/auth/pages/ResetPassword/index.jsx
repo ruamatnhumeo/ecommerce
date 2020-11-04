@@ -1,5 +1,4 @@
-import React, { useRef } from "react";
-import { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import authApi from "../../../../flux/api/authApi";
 import "./ResetPassword.scss";

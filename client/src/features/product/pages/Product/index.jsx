@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import "./Product.scss";
@@ -33,7 +33,7 @@ function Product() {
 	};
 
 	return (
-		<Fragment>
+		<>
 			{productData && (
 				<div className="product">
 					<ProductImgList
@@ -48,7 +48,7 @@ function Product() {
 					/>
 				</div>
 			)}
-		</Fragment>
+		</>
 	);
 }
 

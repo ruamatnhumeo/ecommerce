@@ -14,13 +14,14 @@ function Checkout() {
 	const dispatch = useDispatch();
 	const cart = useSelector((state) => state.cart.bag);
 
-	const total = cart.reduce((total, next) => {
+	const totalCost = cart.reduce((total, next) => {
 		const totalEachProduct = next.quantity * next.price;
 		total += totalEachProduct;
+		return total;
 	}, 0);
 
 	const handleCheckoutSubmit = (checkoutForm) => {
-		const newOrder = { ...checkoutForm, cart, total };
+		const newOrder = { ...checkoutForm, cart, totalCost };
 		dispatch(cartCheckOut(newOrder));
 	};
 
@@ -43,7 +44,7 @@ function Checkout() {
 					isCheckoutPage={true}
 					cartOpen={true}
 					cart={cart}
-					total={total}
+					total={totalCost}
 					onRemove={handleRemoveCart}
 					onClear={handleClearCart}
 				/>

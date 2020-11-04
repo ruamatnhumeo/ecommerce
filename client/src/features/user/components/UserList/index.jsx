@@ -4,11 +4,11 @@ import "./UserList.scss";
 function UserList(props) {
 	const { users, onDeleteUser } = props;
 
-	const handleDelete = (userId) => {
-		if (!onDeleteUser) return;
+	// const handleDelete = (userId) => {
+	// 	if (!onDeleteUser) return;
 
-		onDeleteUser(userId);
-	};
+	// 	onDeleteUser(userId);
+	// };
 
 	return (
 		<div className="user-list">
